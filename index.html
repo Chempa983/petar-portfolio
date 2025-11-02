@@ -1,12 +1,239 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Petar Dojčinović – Portfolio</title>
+  <meta name="description" content="Projektledare med 7 års erfarenhet inom industri, logistik och produktion. Certifierad projektledare. Bas i Landskrona, Skåne." />
+  <meta name="theme-color" content="#0d9488" />
+  <meta property="og:title" content="Petar Dojčinović – Portfolio" />
+  <meta property="og:description" content="Projektledare | Logistik | Produktion – certifierad projektledare med praktisk industribakgrund." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0d9488/ffffff?text=Petar+Dojcinovic" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; }
+    .section-title { position: relative; padding-bottom: .5rem; margin-bottom: 1.25rem; }
+    .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 56px; height: 3px; background-color: #0d9488; border-radius: 9999px; }
+    @media print { .no-print { display: none !important; } body { background: #fff; } }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; } }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in-up { animation: fadeInUp .6s ease-out both; }
+
+    @keyframes pulseLine { 0%,100%{width:56px;} 50%{width:92px;} }
+    .section-title::after { animation: pulseLine 3s ease-in-out infinite; }
+
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .reveal.visible { opacity: 1; transform: translateY(0); transition: opacity .5s ease, transform .5s ease; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { tealbrand: '#0d9488' }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Petar Dojčinović",
+    "jobTitle": "Projektledare",
+    "address": {"@type":"PostalAddress","addressLocality":"Landskrona","addressRegion":"Skåne","addressCountry":"SE"},
+    "email": "mailto:pdojcinovic@proton.me",
+    "telephone": "+46703626388",
+    "knowsAbout": ["Projektledning","Logistik","Produktion","SAP","Microsoft Office"]
+  }
+  </script>
 </head>
-<body>
-  <h1>Välkommen till min portfolio!</h1>
-  <p>Om du ser detta, betyder det att GitHub Pages fungerar perfekt 🎉</p>
+<body class="bg-gray-100 text-gray-800 antialiased">
+  <main class="mx-auto max-w-3xl bg-white shadow-sm rounded-2xl p-6 md:p-10 my-8 fade-in-up">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <img src="https://placehold.co/160x160/0d9488/ffffff?text=PD" alt="Porträtt – Petar Dojčinović" class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mx-auto ring-4 ring-tealbrand ring-offset-4 ring-offset-white" />
+      <h1 class="mt-4 text-3xl md:text-4xl font-black tracking-tight">Petar Dojčinović</h1>
+      <p class="mt-1 text-gray-600">Projektledare | Logistik | Produktion</p>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500" aria-label="Kontaktuppgifter">
+        <a class="hover:text-tealbrand" href="https://maps.apple.com/?q=Landskrona" target="_blank" rel="noopener">Landskrona</a>
+        <span aria-hidden="true">•</span>
+        <a class="hover:text-tealbrand" href="tel:+46703626388" aria-label="Ring Petar">+46 70 362 63 88</a>
+        <span aria-hidden="true">•</span>
+        <a class="text-tealbrand hover:underline" href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
+      </div>
+      <div class="no-print mt-4 flex justify-center gap-3 reveal">
+        <a href="#cv" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">Visa CV</a>
+        <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">⬇️ Ladda ner CV</a>
+      </div>
+    </header>
+
+    <!-- Om mig -->
+    <section id="cv" class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Om mig</h2>
+      <p id="about-text" class="leading-relaxed">
+        Jag är en engagerad och lösningsfokuserad projektledare med sju års erfarenhet från industrin – produktion, logistik och lager. Jag har nyligen slutfört en certifierad utbildning som projektledare och vill fortsätta utvecklas inom planering, samordning och ledarskap. Jag kombinerar praktisk förståelse för flöden, kvalitet och säkerhet med förmågan att driva förbättringsarbete och samarbeta i tvärfunktionella team.
+      </p>
+    </section>
+
+    <!-- Erfarenhet -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Erfarenhet</h2>
+      <div class="space-y-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Truckförare</h3>
+          <p class="text-sm text-gray-500">Saint‑Gobain Sekurit / Job&Talent · 17 maj 2024 – Nu</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Transport av glas och material inom produktion.
+          <li>Arbete enligt 5S-principer och Lean-metodik för kontinuerlig förbättring.</li></li>
+            <li>Lastning/lossning och strukturering av lagerplatser.</li>
+            <li>Samarbete med planering och produktion för säkra flöden.</li>
+            <li>Efterlevnad av säkerhetsrutiner och arbete i WMS/SAP.</li>
+          </ul>
+        </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Processoperatör</h3>
+          <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Övervakning och styrning av produktionslinjer för golv.</li>
+            <li>Maskininställningar för kvalitet och tillgänglighet.</li>
+            <li>Kvalitetskontroller och dokumentation av resultat.</li>
+            <li>Problemlösning och förbättringar i tvärfunktionella team.</li>
+          </ul>
+        </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Truckförare / Lagerarbetare</h3>
+          <p class="text-sm text-gray-500">ICA Lager · 2020 – 2022</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Plockning och packning av frysta varor enligt order.</li>
+            <li>Truckkörning och interntransport av gods.</li>
+            <li>Säker hantering och lagring av frysta produkter.</li>
+            <li>Deltog i lagerinventeringar och säkerhetsgenomgångar.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Utbildning & Färdigheter -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Utbildning & färdigheter</h2>
+      <div class="space-y-6">
+        <div class="card p-0">
+          <div class="p-6">
+            <h3 class="text-lg font-bold">Certifierad projektledare</h3>
+            <p class="text-sm text-gray-500">Distansinstitutet · maj 2025</p>
+            <ul class="mt-3 list-disc list-inside space-y-1">
+              <li>Certifikat och godkänt examensprojekt.</li>
+              <li>Kunskap i projektfaser, riskhantering, kommunikation och presentation.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card p-0">
+          <div class="p-6">
+            <h3 class="text-lg font-bold">Nyckelfärdigheter</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Projektledning</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Logistik</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Produktion</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Teamarbete</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Kvalitet & säkerhet</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">SAP</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Microsoft 365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
+    <!-- Projekt / Case Studies -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Projekt / Case Studies</h2>
+      <div class="grid grid-cols-1 gap-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Airsoft för hela företaget (fritidsprojekt)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Stärka samarbete och laganda genom en strukturerad teambuilding‑dag.</li>
+            <li><span class="font-semibold">Insats:</span> Planering, säkerhetsramverk, tidsplan, koordinering av aktiviteter och kommunikation.</li>
+            <li><span class="font-semibold">Resultat:</span> Tydlig agenda och uppföljning som gav förbättrad teamkänsla.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Pesisttema – multifunktionell plattform</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Koppla samman lokala användare genom tjänster, rekommendationer och trygghetsfunktioner.</li>
+            <li><span class="font-semibold">Insats:</span> Projektidé, scope, kravspecifikation, roadmap och pitchmaterial.</li>
+            <li><span class="font-semibold">Resultat:</span> Skalbar projektplan och koncept redo för vidare utveckling.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Multifunktionell applikation</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Samla annonser, evenemang, småtjänster och kontakt i en modern app.</li>
+            <li><span class="font-semibold">Insats:</span> Research, informationsarkitektur, wireframes, användarflöden.</li>
+            <li><span class="font-semibold">Resultat:</span> Koncept och designskisser som kan testas med användare.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Hund Café – privat koncept</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Ta fram en mötesplats för hundägare med tydlig kundresa.</li>
+            <li><span class="font-semibold">Insats:</span> Affärsplan, budget, konceptdesign, besöksflöden och servicepunkter.</li>
+            <li><span class="font-semibold">Resultat:</span> Färdigt konceptunderlag för genomförande.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">… och mycket mer</h3>
+          <p class="mt-3 text-gray-700">Jag driver kontinuerligt idéer från skiss till struktur och leverans – fokus på planering, samarbete, tydliga mål och mätbara resultat.</p>
+        </article>
+      </div>
+    </section>    
+    <!-- Diplom & Certifikat -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Diplom & Certifikat</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Diplom – Projektledare</h3>
+          <embed src="diplom-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="diplom-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">⬇️ Ladda ner Diplom</a>
+        </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Certifikat – Projektledare</h3>
+          <embed src="certifikat-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="certifikat-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">⬇️ Ladda ner Certifikat</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-gray-500 text-sm reveal">
+      <p>&copy; 2025 Petar Dojčinović. Alla rättigheter reserverade.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Simple scroll-reveal for .reveal elements
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      })
+    },{threshold: 0.1});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
