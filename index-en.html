@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Base -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Petar Dojčinović – Portfolio</title>
+  <meta name="description" content="Project Leader with 7 years in industry (production, logistics, warehouse). Certified Project Manager based in Landskrona, Sweden." />
+  <meta name="theme-color" content="#0d9488" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Petar Dojčinović – Portfolio" />
+  <meta property="og:description" content="Project Leadership · Logistics · Production — certified PM with hands-on industrial background." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0d9488/ffffff?text=Petar+Dojcinovic" />
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { tealbrand: '#0d9488' } } }
+    }
+  </script>
+
+  <!-- Styles -->
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif; }
+    .section-title { position: relative; padding-bottom: .5rem; margin-bottom: 1.25rem; }
+    .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 56px; height: 3px; background-color: #0d9488; border-radius: 9999px; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in-up { animation: fadeInUp .6s ease-out both; }
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .reveal.visible { opacity: 1; transform: translateY(0); transition: opacity .5s ease, transform .5s ease; }
+    @media print { .no-print { display: none !important; } body { background: #fff; } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Petar Dojčinović",
+    "jobTitle": "Project Leader",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Landskrona",
+      "addressRegion": "Skåne",
+      "addressCountry": "SE"
+    },
+    "email": "mailto:pdojcinovic@proton.me",
+    "telephone": "+46703626388",
+    "knowsAbout": ["Project Management","Logistics","Production","SAP","Microsoft 365"]
+  }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+  <main class="mx-auto max-w-3xl bg-white shadow-sm rounded-2xl p-6 md:p-10 my-8 fade-in-up">
+
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <img src="https://placehold.co/160x160/0d9488/ffffff?text=PD" alt="Portrait — Petar Dojčinović"
+           class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mx-auto ring-4 ring-tealbrand ring-offset-4 ring-offset-white" />
+      <h1 class="mt-4 text-3xl md:text-4xl font-black tracking-tight">Petar Dojčinović</h1>
+      <p class="mt-1 text-gray-600">Project Leader · Logistics · Production</p>
+
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500" aria-label="Contact">
+        <a class="hover:text-tealbrand" href="https://maps.apple.com/?q=Landskrona" target="_blank" rel="noopener">Landskrona</a>
+        <span aria-hidden="true">•</span>
+        <a class="hover:text-tealbrand" href="tel:+46703626388" aria-label="Call Petar">+46 70 362 63 88</a>
+        <span aria-hidden="true">•</span>
+        <a class="text-tealbrand hover:underline" href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
+      </div>
+
+      <div class="no-print mt-4 flex justify-center gap-3 reveal">
+        <a href="#cv" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">View CV</a>
+        <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">⬇️ Download CV</a>
+      </div>
+
+      <nav class="mt-3 text-sm text-gray-500">
+        <a class="hover:underline" href="./">SV</a> · <span class="font-semibold">EN</span>
+      </nav>
+    </header>
+
+    <!-- About -->
+    <section id="cv" class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">About me</h2>
+      <p class="leading-relaxed">
+        I’m a committed, solution-oriented Project Leader with seven years of hands-on experience in industry —
+        production, logistics, and warehouse. I recently completed a certified Project Manager program and I’m focused
+        on planning, coordination and leadership. I combine a practical understanding of flows, quality and safety
+        with the ability to drive improvements and collaborate in cross-functional teams.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Experience</h2>
+
+      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+        <h3 class="text-lg font-bold">Forklift Operator</h3>
+        <p class="text-sm text-gray-500">Saint-Gobain Sekurit / Job&amp;Talent · 17 May 2024 – Present</p>
+        <ul class="mt-3 list-disc list-inside space-y-1">
+          <li>Transport of glass and materials within production.</li>
+          <li>Loading/unloading and structuring warehouse locations.</li>
+          <li>Collaboration with planning and production for safe flows.</li>
+          <li>Compliance with safety routines and work in WMS/SAP.</li>
+          <li>Work based on 5S principles and Lean methodology to ensure continuous improvement and efficiency.</li>
+          <li>Collaboration with planning and production for safe flows.</li>
+          <li>Compliance with safety routines and work in WMS/SAP.</li>
+        </ul>
+      </article>
+
+      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card mt-6">
+        <h3 class="text-lg font-bold">Process Operator</h3>
+        <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
+        <ul class="mt-3 list-disc list-inside space-y-1">
+          <li>Monitoring and control of production lines for flooring.</li>
+          <li>Machine adjustments for quality and availability.</li>
+          <li>Quality checks and documentation of results.</li>
+          <li>Problem solving and improvements in cross-functional teams.</li>
+        </ul>
+      </article>
+
+      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card mt-6">
+        <h3 class="text-lg font-bold">Forklift / Warehouse</h3>
+        <p class="text-sm text-gray-500">ICA Lager · 2020 – 2022</p>
+        <ul class="mt-3 list-disc list-inside space-y-1">
+          <li>Picking and packing of frozen goods according to orders.</li>
+          <li>Forklift driving and internal transport of goods.</li>
+          <li>Safe handling and storage of frozen products.</li>
+          <li>Participation in stocktaking and safety briefings.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Education & Skills -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Education &amp; Skills</h2>
+
+      <div class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+        <h3 class="text-lg font-bold">Certified Project Manager</h3>
+        <p class="text-sm text-gray-500">Distansinstitutet · May 2025</p>
+        <ul class="mt-3 list-disc list-inside space-y-1">
+          <li>Certificate and approved final project.</li>
+          <li>Project phases, risk management, communication and presenting.</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-50 p-6 rounded-xl shadow-sm card mt-6">
+        <h3 class="text-lg font-bold">Key Skills</h3>
+        <p class="mt-3">
+          Project Management · Logistics · Production · Teamwork · Quality &amp; Safety · SAP · Microsoft 365
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects / Case Studies -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Projects / Case Studies</h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Company-wide Airsoft Day (side project)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Strengthen collaboration and team spirit with a structured team-building day.</li>
+            <li><span class="font-semibold">Work:</span> Planning, safety framework, timeline, coordination of activities and communication.</li>
+            <li><span class="font-semibold">Result:</span> Clear agenda and follow-up that improved team feeling.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Pesisttema — multifunctional platform</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Connect local users via services, recommendations and safety features.</li>
+            <li><span class="font-semibold">Work:</span> Project idea, scope, requirements, roadmap and pitch material.</li>
+            <li><span class="font-semibold">Result:</span> Scalable project plan and concept ready for further development.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Multifunctional Application</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Aggregate ads, events, micro-services and contact in a modern app.</li>
+            <li><span class="font-semibold">Work:</span> Research, information architecture, wireframes, user flows.</li>
+            <li><span class="font-semibold">Result:</span> Concept and design sketches ready for user testing.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Dog Café — private concept</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Create a meeting place for dog owners with a clear customer journey.</li>
+            <li><span class="font-semibold">Work:</span> Business plan, budget, concept design, visitor flows and service points.</li>
+            <li><span class="font-semibold">Result:</span> Ready-to-implement concept basis.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="mt-3 text-gray-500">…and more — I take ideas from sketch to structure and delivery with focus on planning, collaboration, clear goals and measurable results.</p>
+    </section>
+
+    <!-- Diplomas & Certificates -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Diplomas &amp; Certificates</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Diploma — Project Manager</h3>
+          <embed src="diplom-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="diplom-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">⬇️ Download Diploma</a>
+        </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Certificate — Project Manager</h3>
+          <embed src="certifikat-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="certifikat-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">⬇️ Download Certificate</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-gray-500 text-sm reveal">
+      <p>© 2025 Petar Dojčinović. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Simple scroll-reveal -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
