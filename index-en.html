@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Petar Dojčinović – Portfolio</title>
 
-  <meta name="description" content="Project Manager within production, continuous improvement and WCM. Certified Project Manager with strong industrial background. Based in Landskrona, Sweden." />
+  <meta name="description" content="Project Manager in production, continuous improvement and WCM. Certified Project Manager with practical industrial background. Based in Landskrona, Sweden." />
   <meta name="theme-color" content="#0d9488" />
 
   <meta property="og:title" content="Petar Dojčinović – Portfolio" />
-  <meta property="og:description" content="Project Manager • Production • Continuous Improvement (Lean/WCM)." />
+  <meta property="og:description" content="Project Manager • Production • Continuous Improvement (Lean/WCM) – certified Project Manager with hands-on industrial background." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chempa983.github.io/petar-portfolio/petar-logo.png" />
 
@@ -59,6 +59,26 @@
       animation: pulseLine 3s ease-in-out infinite;
     }
 
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp .6s ease-out both; }
+
     @keyframes pulseLine {
       0%,100% { width:56px; }
       50% { width:92px; }
@@ -79,6 +99,25 @@
       transition: opacity .5s ease, transform .5s ease;
     }
   </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Petar Dojčinović",
+    "jobTitle": "Project Manager",
+    "address": {
+      "@type":"PostalAddress",
+      "addressLocality":"Landskrona",
+      "addressRegion":"Skåne",
+      "addressCountry":"SE"
+    },
+    "email": "mailto:pdojcinovic@proton.me",
+    "telephone": "+46703626388",
+    "knowsAbout": ["Project Management","Continuous Improvement","Lean","5S","Production","Logistics","Safety","SAP","Microsoft Office"]
+  }
+  </script>
 </head>
 
 <body class="text-gray-800 antialiased">
@@ -87,107 +126,222 @@
 
     <!-- Header -->
     <header class="text-center mb-10">
-      <img src="petar-logo.png" alt="Petar – Project Manager logo" class="w-40 mx-auto mb-4 drop-shadow-lg" />
+      <img src="petar-logo.png"
+           alt="Petar – Project Manager logo"
+           class="w-40 mx-auto mb-4 drop-shadow-lg" />
 
       <h1 class="mt-4 text-3xl md:text-4xl font-black tracking-tight">Petar Dojčinović</h1>
       <p class="mt-1 text-gray-600">Project Manager • Production • Continuous Improvement (Lean/WCM)</p>
 
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500">
-        <span>Landskrona, Sweden</span>
-        <span>•</span>
-        <a class="hover:text-tealbrand" href="tel:+46703626388">+46 70 362 63 88</a>
-        <span>•</span>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500" aria-label="Contact details">
+        <a class="hover:text-tealbrand" href="https://maps.apple.com/?q=Landskrona" target="_blank" rel="noopener">Landskrona</a>
+        <span aria-hidden="true">•</span>
+        <a class="hover:text-tealbrand" href="tel:+46703626388" aria-label="Call Petar">+46 70 362 63 88</a>
+        <span aria-hidden="true">•</span>
         <a class="text-tealbrand hover:underline" href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
       </div>
 
-      <div class="mt-4 flex flex-wrap justify-center gap-3 reveal">
-        <a href="#profile" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700">
-          View Profile
+      <div class="no-print mt-4 flex flex-wrap justify-center gap-3 reveal">
+        <a href="#cv" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
+          View CV
         </a>
-        <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900">
+        <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
           ⬇️ Download CV
         </a>
-        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank"
-           class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-gray-800 font-semibold shadow hover:bg-gray-50">
+        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" rel="noopener"
+           class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-gray-800 font-semibold shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
           LinkedIn
         </a>
       </div>
 
-      <nav class="text-sm mt-3 text-gray-500">
+      <nav style="text-align:center; margin-top:8px; color:#475569;" class="text-sm">
         <a href="index.html" class="hover:underline">SV</a> · <span>EN</span>
       </nav>
     </header>
 
-    <!-- KPI / Results -->
-    <section class="mb-10 reveal">
-      <div class="bg-gradient-to-r from-teal-50 to-indigo-50 border border-gray-100 rounded-2xl p-6">
-        <h2 class="text-lg md:text-xl font-bold">KPI / Results – daily focus</h2>
-        <p class="mt-2 text-sm text-gray-600">
-          I work close to operations with follow-up, standardization and continuous improvement.
-        </p>
+    <!-- About / KPI / Results -->
+    <section id="cv" class="mb-10 reveal">
+      <!-- KPI / Results (quick overview) -->
+      <section class="mb-10 reveal">
+        <div class="bg-gradient-to-r from-teal-50 to-indigo-50 border border-gray-100 rounded-2xl p-6">
+          <h2 class="text-lg md:text-xl font-bold text-gray-900">KPI / Results – my daily focus</h2>
+          <p class="mt-2 text-sm text-gray-600">
+            I work close to operations with follow-up, standardization and improvement — focusing on stability, safety and delivery.
+          </p>
 
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-white rounded-xl p-4 shadow-sm">
-            <p class="text-xs font-semibold text-gray-500 uppercase">Safety & standards</p>
-            <p class="mt-1 text-sm">Clear routines, 5S and safe working methods.</p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Safety & standards</p>
+              <p class="mt-1 text-sm text-gray-700">Compliance, 5S and clear working methods to keep production safe and stable.</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Stability & deviations</p>
+              <p class="mt-1 text-sm text-gray-700">Support during deviations/breakdowns and quick return to normal operations.</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Delivery & flow</p>
+              <p class="mt-1 text-sm text-gray-700">Collaboration with production/planning to secure material flow and delivery precision.</p>
+            </div>
           </div>
-          <div class="bg-white rounded-xl p-4 shadow-sm">
-            <p class="text-xs font-semibold text-gray-500 uppercase">Stability & deviations</p>
-            <p class="mt-1 text-sm">Support during deviations and quick return to normal flow.</p>
-          </div>
-          <div class="bg-white rounded-xl p-4 shadow-sm">
-            <p class="text-xs font-semibold text-gray-500 uppercase">Delivery & flow</p>
-            <p class="mt-1 text-sm">Collaboration with production and planning to secure delivery.</p>
-          </div>
+
+          <p class="mt-4 text-xs text-gray-500">
+            KPI examples: delivery precision, deviation frequency, 5S level, incidents/near-misses, flow stability.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Profile -->
-    <section id="profile" class="mb-10 reveal">
-      <h2 class="section-title text-2xl md:text-3xl font-bold">Profile</h2>
-      <p>
-        I am a certified Project Manager with over seven years of experience from production, logistics and process-driven industrial environments.
-        I work close to operations with structure, safety, standardization and Lean-based improvement.
+      <h2 class="section-title text-2xl md:text-3xl font-bold">About me</h2>
+      <p id="about-text" class="leading-relaxed">
+        I am a certified Project Manager with more than seven years of experience in production, logistics and process work in highly automated industrial environments.
+        I work close to operations with structure, safety, standardization and Lean-based continuous improvement.
+        My goal is to drive stable flows and build an improvement culture where results and people develop together.
       </p>
       <p class="mt-4">
-        I have practical experience from <strong>WCM-inspired production environments</strong> and thrive in roles where operational understanding
-        is combined with coordination, communication and change management.
-        I am now seeking my next step as a <strong>Project Manager / CI / Continuous Improvement Lead</strong>.
+        I have practical experience working in <strong>WCM-inspired production environments</strong> and thrive in roles where I can combine operational understanding
+        with coordination, communication and change management. I am now looking for my next step as a
+        <strong>Project Manager / CI / Continuous Improvement Lead</strong>.
       </p>
     </section>
 
     <!-- Experience -->
     <section class="mb-10 reveal">
       <h2 class="section-title text-2xl md:text-3xl font-bold">Experience</h2>
+      <div class="space-y-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Production & material flow (Lean/5S)</h3>
+          <p class="text-sm text-gray-500">Saint-Gobain Sekurit / Job&Talent · 17 May 2024 – Present</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Working in highly automated production with focus on safe and stable flows.</li>
+            <li>Practical application of 5S, standard work and Lean-based ways of working.</li>
+            <li>Collaboration with production and planning to minimize disruptions and ensure delivery.</li>
+            <li>Support during deviations, breakdowns and daily improvement work.</li>
+            <li>Working in WMS/SAP and strict compliance with safety routines.</li>
+          </ul>
+        </article>
 
-      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card mb-6">
-        <h3 class="text-lg font-bold">Production & Material Flow (Lean / 5S)</h3>
-        <p class="text-sm text-gray-500">Saint-Gobain Sekurit / Job&Talent · 2024 – Nov 2025</p>
-        <ul class="mt-3 list-disc list-inside space-y-1">
-          <li>High-automation production with focus on stable and safe material flow.</li>
-          <li>Practical application of Lean, 5S and standard work.</li>
-          <li>Support during deviations, disruptions and daily improvements.</li>
-        </ul>
-      </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Process Operator</h3>
+          <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Monitoring and controlling production lines with focus on quality and stability.</li>
+            <li>Machine adjustments to secure quality, availability and standardized ways of working.</li>
+            <li>Quality checks and documentation of results.</li>
+            <li>Problem-solving and improvements in cross-functional teams.</li>
+          </ul>
+        </article>
 
-      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card mb-6">
-        <h3 class="text-lg font-bold">Process Operator</h3>
-        <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
-        <ul class="mt-3 list-disc list-inside space-y-1">
-          <li>Monitoring and optimization of production lines.</li>
-          <li>Quality control, documentation and process improvements.</li>
-        </ul>
-      </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Logistics & material handling</h3>
+          <p class="text-sm text-gray-500">ICA Warehouse · 2020 – 2022</p>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li>Picking/packing according to orders and internal transport of goods.</li>
+            <li>Forklift driving (A/B) and safe handling of products.</li>
+            <li>Participation in inventory counts, safety briefings and continuous improvement work.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-      <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-        <h3 class="text-lg font-bold">Logistics & Material Handling</h3>
-        <p class="text-sm text-gray-500">ICA Warehouse · 2020 – 2022</p>
-        <ul class="mt-3 list-disc list-inside space-y-1">
-          <li>Inbound/outbound logistics and internal transport.</li>
-          <li>Safety, inventory and structured warehouse operations.</li>
-        </ul>
-      </article>
+    <!-- Education & Skills -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Education & skills</h2>
+      <div class="space-y-6">
+        <div class="card p-0">
+          <div class="p-6">
+            <h3 class="text-lg font-bold">Certified Project Manager</h3>
+            <p class="text-sm text-gray-500">Distansinstitutet · May 2025</p>
+            <ul class="mt-3 list-disc list-inside space-y-1">
+              <li>Certificate and approved final project.</li>
+              <li>Knowledge in project phases, risk management, communication and presentation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card p-0">
+          <div class="p-6">
+            <h3 class="text-lg font-bold">Key skills</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Project Management</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Continuous Improvement</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Lean / 5S</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Production</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Logistics</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Quality & Safety</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">SAP</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Microsoft 365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects / Case Studies -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Projects / Case studies</h2>
+      <div class="grid grid-cols-1 gap-6">
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Production improvement work (Lean/5S – practical)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Create a more stable flow and clearer standards in daily operations.</li>
+            <li><span class="font-semibold">Contribution:</span> Structure, 5S, standardization and collaboration with production during deviations/breakdowns.</li>
+            <li><span class="font-semibold">Outcome:</span> Better order, clearer ways of working and faster recovery during disruptions.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Pesisttema Malmö – concept for the City & EU funding</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Create a digital platform to strengthen safety, local collaboration and information sharing in Malmö.</li>
+            <li><span class="font-semibold">Target group:</span> Citizens, municipality, local stakeholders and civil society.</li>
+            <li><span class="font-semibold">Contribution:</span> Project concept, goals, scope, requirements, stakeholder analysis and roadmap.</li>
+            <li><span class="font-semibold">Funding:</span> Prepared for dialogue with Malmö City and potential EU funds/public grants.</li>
+            <li><span class="font-semibold">Outcome:</span> Structured project material ready for dialogue, pilot and application process.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Airsoft for the whole company (project – planning & safety)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Strengthen collaboration and team spirit through a structured team-building day.</li>
+            <li><span class="font-semibold">Contribution:</span> Planning, safety framework, schedule, activity coordination and communication.</li>
+            <li><span class="font-semibold">Outcome:</span> Clear agenda and follow-up with focus on safe execution.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Multifunctional application (concept & requirements)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Purpose:</span> Collect ads, events, micro-services and communication in one modern app.</li>
+            <li><span class="font-semibold">Contribution:</span> Research, information architecture, wireframes and user flows.</li>
+            <li><span class="font-semibold">Outcome:</span> Concept and structure ready for user testing and further development.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Diploma & Certificates -->
+    <section class="mb-10 reveal">
+      <h2 class="section-title text-2xl md:text-3xl font-bold">Diploma & certificates</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Diploma – Project Management</h3>
+          <embed src="diplom-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="diplom-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">
+            ⬇️ Download Diploma
+          </a>
+        </article>
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
+          <h3 class="text-lg font-bold mb-3">Certificate – Project Management</h3>
+          <embed src="certifikat-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
+          <a href="certifikat-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">
+            ⬇️ Download Certificate
+          </a>
+        </article>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -197,16 +351,17 @@
   </main>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+    // Simple scroll-reveal for .reveal elements
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
-      });
-    }, { threshold: 0.1 });
+      })
+    },{threshold: 0.1});
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
 
 </body>
