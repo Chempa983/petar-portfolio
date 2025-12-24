@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Petar Dojčinović – Portfolio</title>
 
-  <meta name="description" content="Projektledare med 7 års erfarenhet inom industri, logistik och produktion. Certifierad projektledare. Bas i Landskrona, Skåne." />
+  <meta name="description" content="Projektledare inom produktion, förbättring och WCM. Certifierad projektledare med praktisk industribakgrund. Bas i Landskrona, Skåne." />
   <meta name="theme-color" content="#0d9488" />
 
   <meta property="og:title" content="Petar Dojčinović – Portfolio" />
-  <meta property="og:description" content="Projektledare | Logistik | Produktion – certifierad projektledare med praktisk industribakgrund." />
+  <meta property="og:description" content="Projektledare • Produktion • Förbättring (Lean/WCM) – certifierad projektledare med praktisk industribakgrund." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chempa983.github.io/petar-portfolio/petar-logo.png" />
-
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,8 +33,9 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      /* JESENJA POZADINA – topliji tonovi, nije crna */
-      background: linear-gradient(180deg, #fef3c7 0%, #fed7aa 25%, #fdba74 50%, #f97316 75%, #7c2d12 100%);
+      background: radial-gradient(900px 500px at 18% 12%, rgba(13,148,136,.16) 0%, rgba(13,148,136,0) 55%),
+                  radial-gradient(800px 480px at 82% 18%, rgba(99,102,241,.14) 0%, rgba(99,102,241,0) 58%),
+                  linear-gradient(180deg, #f8fafc 0%, #eef2ff 40%, #ffffff 100%);
       line-height: 1.6;
       overflow-x: hidden;
       min-height: 100vh;
@@ -99,34 +99,9 @@
       transform: translateY(0);
       transition: opacity .5s ease, transform .5s ease;
     }
-
-    /* Padajuće lišće – PREKO CELOG EKRANA */
-    .leaf {
-      position: fixed;
-      top: -20vh;
-      font-size: 26px;
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 50; /* iznad svega */
-      animation-name: fall;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-20vh) translateX(0) rotate(0deg);
-        opacity: 0;
-      }
-      15% { opacity: 0.98; }
-      100% {
-        transform: translateY(140vh) translateX(90px) rotate(210deg);
-        opacity: 0;
-      }
-    }
   </style>
 
-  <!-- JSON-LD (ostaje čisto, bez HTML-a unutra) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -141,31 +116,23 @@
     },
     "email": "mailto:pdojcinovic@proton.me",
     "telephone": "+46703626388",
-    "knowsAbout": ["Projektledning","Logistik","Produktion","SAP","Microsoft Office"]
+    "knowsAbout": ["Projektledning","Förbättringsarbete","Lean","5S","Produktion","Logistik","Säkerhet","SAP","Microsoft Office"]
   }
   </script>
 </head>
 
 <body class="text-gray-800 antialiased">
 
-  <!-- Padajuće lišće (globalno, preko celog viewport-a) -->
-  <div class="leaf" style="left:8%;  animation-duration:18s; animation-delay:1s;">🍂</div>
-  <div class="leaf" style="left:22%; animation-duration:21s; animation-delay:4s;">🍁</div>
-  <div class="leaf" style="left:38%; animation-duration:19s; animation-delay:2s;">🍂</div>
-  <div class="leaf" style="left:55%; animation-duration:23s; animation-delay:6s;">🍁</div>
-  <div class="leaf" style="left:72%; animation-duration:20s; animation-delay:3s;">🍂</div>
-  <div class="leaf" style="left:88%; animation-duration:24s; animation-delay:5s;">🍁</div>
-
   <main class="mx-auto max-w-3xl bg-white/95 shadow-sm rounded-2xl p-6 md:p-10 my-8 fade-in-up relative z-10">
 
     <!-- Header -->
     <header class="text-center mb-10">
       <img src="petar-logo.png"
-     alt="Petar – Project Manager logo"
-     class="w-40 mx-auto mb-4 drop-shadow-lg" />
+           alt="Petar – Project Manager logo"
+           class="w-40 mx-auto mb-4 drop-shadow-lg" />
 
       <h1 class="mt-4 text-3xl md:text-4xl font-black tracking-tight">Petar Dojčinović</h1>
-      <p class="mt-1 text-gray-600">Projektledare | Logistik | Produktion</p>
+      <p class="mt-1 text-gray-600">Projektledare • Produktion • Förbättring (Lean/WCM)</p>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500" aria-label="Kontaktuppgifter">
         <a class="hover:text-tealbrand" href="https://maps.apple.com/?q=Landskrona" target="_blank" rel="noopener">Landskrona</a>
@@ -175,12 +142,16 @@
         <a class="text-tealbrand hover:underline" href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
       </div>
 
-      <div class="no-print mt-4 flex justify-center gap-3 reveal">
+      <div class="no-print mt-4 flex flex-wrap justify-center gap-3 reveal">
         <a href="#cv" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
           Visa CV
         </a>
         <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
           ⬇️ Ladda ner CV
+        </a>
+        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" rel="noopener"
+           class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-gray-800 font-semibold shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
+          LinkedIn
         </a>
       </div>
 
@@ -191,16 +162,47 @@
 
     <!-- Om mig -->
     <section id="cv" class="mb-10 reveal">
+      <!-- KPI / Resultat (snabb överblick) -->
+<section class="mb-10 reveal">
+  <div class="bg-gradient-to-r from-teal-50 to-indigo-50 border border-gray-100 rounded-2xl p-6">
+    <h2 class="text-lg md:text-xl font-bold text-gray-900">KPI / Resultat – mitt fokus i vardagen</h2>
+    <p class="mt-2 text-sm text-gray-600">
+      Jag arbetar nära verksamheten med uppföljning, standardisering och förbättring – med fokus på stabilitet, säkerhet och leverans.
+    </p>
+
+    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white rounded-xl p-4 shadow-sm">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Säkerhet & standard</p>
+        <p class="mt-1 text-sm text-gray-700">Efterlevnad av rutiner, 5S och tydliga arbetssätt för trygg produktion.</p>
+      </div>
+
+      <div class="bg-white rounded-xl p-4 shadow-sm">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Stabilitet & avvikelser</p>
+        <p class="mt-1 text-sm text-gray-700">Stöd vid avvikelser/driftstopp och snabb återgång till normal drift.</p>
+      </div>
+
+      <div class="bg-white rounded-xl p-4 shadow-sm">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Leverans & flöde</p>
+        <p class="mt-1 text-sm text-gray-700">Samarbete med produktion/planering för säkra flöden och leveransprecision.</p>
+      </div>
+    </div>
+
+    <p class="mt-4 text-xs text-gray-500">
+      Exempel på KPI: leveransprecision, avvikelsefrekvens, 5S-nivå, incidenter/tillbud, stabilitet i flödet.
+    </p>
+  </div>
+</section>
+
       <h2 class="section-title text-2xl md:text-3xl font-bold">Om mig</h2>
       <p id="about-text" class="leading-relaxed">
-        Jag är en engagerad och lösningsfokuserad projektledare med sju års erfarenhet från industrin – produktion, logistik och lager.
-        Jag har nyligen slutfört en certifierad utbildning som projektledare och vill fortsätta utvecklas inom planering, samordning och ledarskap.
-        Jag kombinerar praktisk förståelse för flöden, kvalitet och säkerhet med förmågan att driva förbättringsarbete och samarbeta i tvärfunktionella team.
+        Jag är certifierad projektledare med över sju års erfarenhet från produktion, logistik och processarbete i högautomatiserad industrimiljö.
+        Jag arbetar nära verksamheten med struktur, säkerhet, standardisering och Lean-baserat förbättringsarbete.
+        Mitt mål är att driva stabila flöden och skapa en förbättringskultur där resultat och människor utvecklas tillsammans.
       </p>
       <p class="mt-4">
-        Jag arbetar strukturerat, tar ansvar och trivs i roller där jag får kombinera praktiskt arbete med ledarskap.
-        Mitt nästa steg i karriären är en roll där jag kan bidra som
-        <strong>Team Leader, Skiftledare eller Arbetsledare</strong>.
+        Jag har praktisk erfarenhet av arbete i <strong>WCM-liknande produktionsmiljö</strong> och trivs i roller där jag får kombinera operativ förståelse
+        med koordinering, kommunikation och förändringsarbete. Jag söker nu nästa steg som
+        <strong>Projektledare / CI / Förbättringsledare</strong>.
       </p>
     </section>
 
@@ -209,14 +211,14 @@
       <h2 class="section-title text-2xl md:text-3xl font-bold">Erfarenhet</h2>
       <div class="space-y-6">
         <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Truckförare</h3>
+          <h3 class="text-lg font-bold">Produktion & materialflöde (Lean/5S)</h3>
           <p class="text-sm text-gray-500">Saint-Gobain Sekurit / Job&Talent · 17 maj 2024 – Nu</p>
           <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Transport av glas och material inom produktion.</li>
-            <li>Arbete enligt 5S-principer och Lean-metodik för kontinuerlig förbättring.</li>
-            <li>Lastning/lossning och strukturering av lagerplatser.</li>
-            <li>Samarbete med planering och produktion för säkra flöden.</li>
-            <li>Efterlevnad av säkerhetsrutiner och arbete i WMS/SAP.</li>
+            <li>Arbete i högautomatiserad produktion med fokus på säkra och stabila flöden.</li>
+            <li>Praktisk tillämpning av 5S, standardarbete och Lean-baserade arbetssätt.</li>
+            <li>Samverkan med produktion och planering för att minimera störningar och säkra leverans.</li>
+            <li>Stöd vid avvikelser, driftstopp och förbättringsarbete i vardagen.</li>
+            <li>Arbete i WMS/SAP samt efterlevnad av säkerhetsrutiner.</li>
           </ul>
         </article>
 
@@ -224,21 +226,20 @@
           <h3 class="text-lg font-bold">Processoperatör</h3>
           <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
           <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Övervakning och styrning av produktionslinjer för golv.</li>
-            <li>Maskininställningar för kvalitet och tillgänglighet.</li>
+            <li>Övervakning och styrning av produktionslinjer med fokus på kvalitet och stabilitet.</li>
+            <li>Maskininställningar för kvalitet, tillgänglighet och standardiserat arbetssätt.</li>
             <li>Kvalitetskontroller och dokumentation av resultat.</li>
             <li>Problemlösning och förbättringar i tvärfunktionella team.</li>
           </ul>
         </article>
 
         <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Truckförare / Lagerarbetare</h3>
+          <h3 class="text-lg font-bold">Logistik & materialhantering</h3>
           <p class="text-sm text-gray-500">ICA Lager · 2020 – 2022</p>
           <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Plockning och packning av frysta varor enligt order.</li>
-            <li>Truckkörning och interntransport av gods.</li>
-            <li>Säker hantering och lagring av frysta produkter.</li>
-            <li>Deltog i lagerinventeringar och säkerhetsgenomgångar.</li>
+            <li>Plockning och packning enligt order samt interntransport av gods.</li>
+            <li>Truckkörning (A/B) och säker hantering av varor.</li>
+            <li>Deltagande i inventeringar, säkerhetsgenomgångar och förbättringsarbete.</li>
           </ul>
         </article>
       </div>
@@ -258,14 +259,16 @@
             </ul>
           </div>
         </div>
+
         <div class="card p-0">
           <div class="p-6">
             <h3 class="text-lg font-bold">Nyckelfärdigheter</h3>
             <div class="mt-3 flex flex-wrap gap-2">
               <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Projektledning</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Logistik</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Förbättringsarbete</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Lean / 5S</span>
               <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Produktion</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Teamarbete</span>
+              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Logistik</span>
               <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Kvalitet & säkerhet</span>
               <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">SAP</span>
               <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Microsoft 365</span>
@@ -279,49 +282,45 @@
     <section class="mb-10 reveal">
       <h2 class="section-title text-2xl md:text-3xl font-bold">Projekt / Case Studies</h2>
       <div class="grid grid-cols-1 gap-6">
+
         <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Airsoft för hela företaget (fritidsprojekt)</h3>
+          <h3 class="text-lg font-bold">Förbättringsarbete i produktion (Lean/5S – praktiskt)</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Skapa stabilare flöde och tydligare standarder i vardagen.</li>
+            <li><span class="font-semibold">Insats:</span> Struktur, 5S, standardisering och samverkan med produktion vid avvikelser/driftstopp.</li>
+            <li><span class="font-semibold">Resultat:</span> Förbättrad ordning, tydligare arbetssätt och snabbare återgång vid störningar.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Pesisttema Malmö – koncept för stad & EU-finansiering</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
+            <li><span class="font-semibold">Syfte:</span> Skapa en digital plattform för ökad trygghet, lokal samverkan och informationsdelning i Malmö.</li>
+            <li><span class="font-semibold">Målgrupp:</span> Medborgare, kommun, lokala aktörer och civilsamhälle.</li>
+            <li><span class="font-semibold">Insats:</span> Projektidé, målformulering, scope, kravspecifikation, intressentanalys och roadmap.</li>
+            <li><span class="font-semibold">Finansiering:</span> Anpassad för dialog med Malmö stad samt möjliga EU-fonder och offentliga bidrag.</li>
+            <li><span class="font-semibold">Resultat:</span> Strukturerat projektunderlag redo för vidare dialog, pilot och ansökningsprocess.</li>
+          </ul>
+        </article>
+
+        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
+          <h3 class="text-lg font-bold">Airsoft för hela företaget (projekt – planering & säkerhet)</h3>
           <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
             <li><span class="font-semibold">Syfte:</span> Stärka samarbete och laganda genom en strukturerad teambuilding-dag.</li>
             <li><span class="font-semibold">Insats:</span> Planering, säkerhetsramverk, tidsplan, koordinering av aktiviteter och kommunikation.</li>
-            <li><span class="font-semibold">Resultat:</span> Tydlig agenda och uppföljning som gav förbättrad teamkänsla.</li>
+            <li><span class="font-semibold">Resultat:</span> Tydlig agenda och uppföljning med fokus på tryggt genomförande.</li>
           </ul>
         </article>
 
         <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Pesisttema – multifunktionell plattform</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Syfte:</span> Koppla samman lokala användare genom tjänster, rekommendationer och trygghetsfunktioner.</li>
-            <li><span class="font-semibold">Insats:</span> Projektidé, scope, kravspecifikation, roadmap och pitchmaterial.</li>
-            <li><span class="font-semibold">Resultat:</span> Skalbar projektplan och koncept redo för vidare utveckling.</li>
-          </ul>
-        </article>
-
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Multifunktionell applikation</h3>
+          <h3 class="text-lg font-bold">Multifunktionell applikation (koncept & kravarbete)</h3>
           <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
             <li><span class="font-semibold">Syfte:</span> Samla annonser, evenemang, småtjänster och kontakt i en modern app.</li>
-            <li><span class="font-semibold">Insats:</span> Research, informationsarkitektur, wireframes, användarflöden.</li>
-            <li><span class="font-semibold">Resultat:</span> Koncept och designskisser som kan testas med användare.</li>
+            <li><span class="font-semibold">Insats:</span> Research, informationsarkitektur, wireframes och användarflöden.</li>
+            <li><span class="font-semibold">Resultat:</span> Koncept och struktur redo för användartest och vidare utveckling.</li>
           </ul>
         </article>
 
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Hund Café – privat koncept</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Syfte:</span> Ta fram en mötesplats för hundägare med tydlig kundresa.</li>
-            <li><span class="font-semibold">Insats:</span> Affärsplan, budget, konceptdesign, besöksflöden och servicepunkter.</li>
-            <li><span class="font-semibold">Resultat:</span> Färdigt konceptunderlag för genomförande.</li>
-          </ul>
-        </article>
-
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">… och mycket mer</h3>
-          <p class="mt-3 text-gray-700">
-            Jag driver kontinuerligt idéer från skiss till struktur och leverans – fokus på planering,
-            samarbete, tydliga mål och mätbara resultat.
-          </p>
-        </article>
       </div>
     </section>
 
