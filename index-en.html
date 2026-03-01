@@ -1,412 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Petar Dojčinović – Portfolio</title>
-
-  <meta name="description" content="Certified Project Manager with hands-on industrial background in production, logistics and continuous improvement (Lean/5S/WCM). Based in Landskrona, Sweden." />
-  <meta name="theme-color" content="#0d9488" />
-
-  <meta property="og:title" content="Petar Dojčinović – Portfolio" />
-  <meta property="og:description" content="Project Management • Production • Continuous Improvement (Lean/5S/WCM) – practical cases and documented value." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://chempa983.github.io/petar-portfolio/petar-logo.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { tealbrand: '#0d9488' }
-        }
-      }
-    }
-  </script>
-
+  <meta name="description" content="Certified project manager with experience in production, logistics and process improvement."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    :root { color-scheme: light; }
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface2: #f4f2ee;
+      --border: #e8e4dc;
+      --border-dark: #d0cab8;
+      --ink: #1a1814;
+      --ink-mid: #4a4540;
+      --ink-light: #8a8278;
+      --teal: #2a6b6b;
+      --teal-light: #3d8f8f;
+      --teal-pale: #eef5f5;
+      --gold: #b8860b;
+      --gold-pale: #fdf8ee;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      background: radial-gradient(900px 500px at 18% 12%, rgba(13,148,136,.16) 0%, rgba(13,148,136,0) 55%),
-                  radial-gradient(800px 480px at 82% 18%, rgba(99,102,241,.14) 0%, rgba(99,102,241,0) 58%),
-                  linear-gradient(180deg, #f8fafc 0%, #eef2ff 40%, #ffffff 100%);
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
-    .section-title {
-      position: relative;
-      padding-bottom: .5rem;
-      margin-bottom: 1.25rem;
+    .lang-bar {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 200;
+      display: flex; justify-content: flex-end; align-items: center;
+      padding: 0.7rem 3rem;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-nav { display: flex; align-items: center; gap: 1.5rem; }
+    .lang-nav a {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink-light); transition: color 0.2s;
+    }
+    .lang-nav a.active { color: var(--teal); font-weight: 600; }
+    .lang-nav a:hover { color: var(--ink); }
+    .lang-sep { color: var(--border-dark); font-size: 0.7rem; }
+
+    .hero {
+      padding: 7rem 3rem 4rem;
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: end;
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-title::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 56px;
-      height: 3px;
-      background-color: #0d9488;
-      border-radius: 9999px;
-      animation: pulseLine 3s ease-in-out infinite;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1.2rem;
+      animation: fadeUp 0.5s ease both;
+    }
+    .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--teal); }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.01em; color: var(--ink);
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.5s 0.1s ease both;
     }
 
-    @media print {
-      .no-print { display: none !important; }
-      body { background: #fff; }
+    .hero-role {
+      font-size: 0.9rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-light);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.5s 0.15s ease both;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
-      }
+    .hero-bio {
+      font-size: 1rem; color: var(--ink-mid); max-width: 560px;
+      line-height: 1.8; margin-bottom: 2rem;
+      animation: fadeUp 0.5s 0.2s ease both;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .hero-contacts { display: flex; flex-wrap: wrap; gap: 0.8rem; animation: fadeUp 0.5s 0.25s ease both; }
+    .contact-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border-dark); border-radius: 2rem;
+      font-size: 0.8rem; color: var(--ink-mid); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .fade-in-up { animation: fadeInUp .6s ease-out both; }
+    .contact-chip:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }
 
-    @keyframes pulseLine {
-      0%,100% { width:56px; }
-      50% { width:92px; }
+    .hero-stats {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      padding-bottom: 0.5rem;
+      animation: fadeIn 0.8s 0.3s ease both;
     }
+    .stat-item { text-align: right; }
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--teal); line-height: 1;
+    }
+    .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); }
 
-    .card {
-      transition: transform .25s ease, box-shadow .25s ease;
+    .hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; animation: fadeUp 0.5s 0.3s ease both; }
+    .btn-primary {
+      padding: 0.7rem 1.6rem; background: var(--teal); color: #fff;
+      border: none; border-radius: 0.3rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 0.82rem; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none; transition: background 0.2s;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    .btn-primary:hover { background: var(--teal-light); }
+    .btn-outline {
+      padding: 0.7rem 1.6rem; background: transparent; color: var(--ink);
+      border: 1px solid var(--border-dark); border-radius: 0.3rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 0.82rem; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
 
-    .reveal { opacity: 0; transform: translateY(10px); }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity .5s ease, transform .5s ease;
+    .main { max-width: 900px; margin: 0 auto; padding: 0 3rem 5rem; }
+
+    .section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); white-space: nowrap; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 0.6rem;
+      overflow: hidden; margin-bottom: 2rem;
+    }
+    .kpi-cell { background: var(--surface); padding: 1.4rem 1.2rem; transition: background 0.2s; }
+    .kpi-cell:hover { background: var(--teal-pale); }
+    .kpi-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .kpi-name { font-weight: 600; font-size: 0.85rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .kpi-desc { font-size: 0.78rem; color: var(--ink-light); line-height: 1.5; }
+
+    .exp-entry { margin-bottom: 2.5rem; }
+    .exp-entry:last-child { margin-bottom: 0; }
+    .exp-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+    .exp-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+    .exp-period { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-light); white-space: nowrap; padding-top: 0.25rem; }
+    .exp-company { font-size: 0.82rem; color: var(--teal); font-weight: 500; margin-bottom: 0.8rem; letter-spacing: 0.04em; }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .exp-list li { font-size: 0.88rem; color: var(--ink-mid); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5; }
+    .exp-list li::before { content: '–'; color: var(--teal); font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .exp-note { margin-top: 0.7rem; padding: 0.6rem 0.9rem; background: var(--teal-pale); border-left: 2px solid var(--teal); border-radius: 0 0.3rem 0.3rem 0; font-size: 0.8rem; color: var(--ink-mid); font-style: italic; }
+
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag { padding: 0.35rem 0.85rem; border: 1px solid var(--border-dark); border-radius: 2rem; font-size: 0.78rem; color: var(--ink-mid); background: var(--surface); transition: all 0.2s; }
+    .skill-tag:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }
+    .skill-tag.featured { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+    .cases-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+    .case-card { border: 1px solid var(--border); border-radius: 0.6rem; padding: 1.5rem; background: var(--surface); transition: border-color 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+    .case-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--teal); transform: scaleY(0); transform-origin: top; transition: transform 0.3s ease; }
+    .case-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(42,107,107,0.08); }
+    .case-card:hover::before { transform: scaleY(1); }
+    .case-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.8rem; }
+    .case-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 0.5rem; }
+    .case-item-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.2rem; }
+    .case-item-val { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.4; }
+    .case-note { font-size: 0.78rem; color: var(--ink-light); font-style: italic; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+
+    .edu-entry { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+    .edu-entry:last-child { border-bottom: none; }
+    .edu-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.82rem; color: var(--teal); margin-bottom: 0.4rem; }
+    .edu-desc { font-size: 0.82rem; color: var(--ink-light); }
+    .edu-year { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); white-space: nowrap; }
+
+    .diploma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .diploma-card { border: 1px solid var(--border); border-radius: 0.6rem; padding: 1.2rem 1.5rem; background: var(--gold-pale); display: flex; align-items: center; gap: 1rem; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .diploma-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,134,11,0.1); }
+    .diploma-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .diploma-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
+    .diploma-sub { font-size: 0.75rem; color: var(--ink-light); }
+
+    .portfolio-link-card { background: var(--teal); border-radius: 0.6rem; padding: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; text-decoration: none; margin-top: 2rem; transition: background 0.2s; }
+    .portfolio-link-card:hover { background: var(--teal-light); }
+    .plc-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
+    .plc-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; font-weight: 600; }
+    .plc-arrow { font-size: 1.5rem; color: rgba(255,255,255,0.7); }
+
+    footer { text-align: center; padding: 2rem 3rem; font-size: 0.78rem; color: var(--ink-light); border-top: 1px solid var(--border); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 750px) {
+      .lang-bar { padding: 0.7rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2rem; }
+      .hero-stats { flex-direction: row; justify-content: flex-start; }
+      .stat-item { text-align: left; }
+      .main { padding: 0 1.5rem 4rem; }
+      .kpi-row { grid-template-columns: 1fr; }
+      .case-row { grid-template-columns: 1fr; }
+      .diploma-grid { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; gap: 0.2rem; }
+      .edu-entry { flex-direction: column; gap: 0.3rem; }
+      .portfolio-link-card { flex-direction: column; align-items: flex-start; }
     }
   </style>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Petar Dojčinović",
-    "jobTitle": "Project Manager",
-    "address": {
-      "@type":"PostalAddress",
-      "addressLocality":"Landskrona",
-      "addressRegion":"Skåne",
-      "addressCountry":"SE"
-    },
-    "email": "mailto:pdojcinovic@proton.me",
-    "telephone": "+46703626388",
-    "knowsAbout": ["Project Management","Continuous Improvement","Lean","5S","Production","Logistics","Safety","WMS/SAP","Microsoft Office"]
-  }
-  </script>
 </head>
+<body>
 
-<body class="text-gray-800 antialiased">
+  <div class="lang-bar">
+    <div class="lang-nav">
+      <a href="index.html">SV</a>
+      <span class="lang-sep">·</span>
+      <a href="index-en.html" class="active">EN</a>
+    </div>
+  </div>
 
-  <main class="mx-auto max-w-3xl bg-white/95 shadow-sm rounded-2xl p-6 md:p-10 my-8 fade-in-up relative z-10">
-
-    <!-- Header -->
-    <header class="text-center mb-10">
-      <img src="petar-logo.png"
-           alt="Petar – Project Manager logo"
-           class="w-40 mx-auto mb-4 drop-shadow-lg" />
-
-      <h1 class="mt-4 text-3xl md:text-4xl font-black tracking-tight">Petar Dojčinović</h1>
-      <p class="mt-1 text-gray-600">Project Management • Production • Continuous Improvement (Lean/5S/WCM)</p>
-
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500" aria-label="Contact details">
-        <a class="hover:text-tealbrand" href="https://maps.apple.com/?q=Landskrona" target="_blank" rel="noopener">Landskrona, Sweden</a>
-        <span aria-hidden="true">•</span>
-        <a class="hover:text-tealbrand" href="tel:+46703626388" aria-label="Call Petar">+46 70 362 63 88</a>
-        <span aria-hidden="true">•</span>
-        <a class="text-tealbrand hover:underline" href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
-      </div>
-
-      <div class="no-print mt-4 flex flex-wrap justify-center gap-3 reveal">
-        <a href="#cv" class="inline-flex items-center rounded-full bg-tealbrand px-5 py-2.5 text-white font-semibold shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
-          View Profile
-        </a>
-        <a href="Petar_Dojcinovic_CV.pdf" download class="inline-flex items-center rounded-full bg-gray-800 px-5 py-2.5 text-white font-semibold shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
-          ⬇️ Download CV
-        </a>
-        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" rel="noopener"
-           class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-gray-800 font-semibold shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tealbrand">
-          LinkedIn
-        </a>
-      </div>
-
-      <nav style="text-align:center; margin-top:8px; color:#475569;" class="text-sm">
-        <a href="index.html" class="hover:underline">SV</a> · <span>EN</span>
-      </nav>
-    </header>
-
-    <!-- About -->
-    <section id="cv" class="mb-10 reveal">
-
-      <!-- KPI / Results (quick overview) -->
-      <section class="mb-10 reveal">
-        <div class="bg-gradient-to-r from-teal-50 to-indigo-50 border border-gray-100 rounded-2xl p-6">
-          <h2 class="text-lg md:text-xl font-bold text-gray-900">KPI / Results – my day-to-day focus</h2>
-          <p class="mt-2 text-sm text-gray-600">
-            I work close to operations with follow-up, standardization and improvement – focusing on stability, safety and delivery.
-          </p>
-
-          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-white rounded-xl p-4 shadow-sm">
-              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Safety & standard work</p>
-              <p class="mt-1 text-sm text-gray-700">5S, clear routines and compliance that create predictable and safe operations.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-4 shadow-sm">
-              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Stability & deviations</p>
-              <p class="mt-1 text-sm text-gray-700">Fast handling of deviations/stops and quick return to normal operations.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-4 shadow-sm">
-              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Delivery & flow</p>
-              <p class="mt-1 text-sm text-gray-700">Coordination between production/planning/logistics to secure stable flow.</p>
-            </div>
-          </div>
-
-          <p class="mt-4 text-xs text-gray-500">
-            KPI examples: delivery accuracy, deviation frequency, 5S score, incidents/near-misses, flow stability.
-          </p>
-        </div>
-      </section>
-
-      <h2 class="section-title text-2xl md:text-3xl font-bold">About me</h2>
-      <p id="about-text" class="leading-relaxed">
-        I am a certified Project Manager with 7+ years of hands-on experience in production, logistics and process operations in highly automated industrial environments.
-        I combine operational understanding with structure, clear communication and continuous improvement (Lean/5S) to create stable flow and better cross-functional collaboration.
+  <header class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Project Manager · Operations · Improvement</div>
+      <h1>Petar<br>Dojčinović</h1>
+      <p class="hero-role">Landskrona, Sweden</p>
+      <p class="hero-bio">
+        Certified project manager with over seven years of experience in production, logistics,
+        and process improvement in highly automated industrial environments. I combine operational
+        understanding with structured improvement work (Lean/5S) to create stable flows and clear, measurable results.
       </p>
-      <p class="mt-4">
-        I thrive in roles where I can take ownership, coordinate people and drive improvements in daily operations.
-        My next step is a role as <strong>Project Manager / Continuous Improvement / Team Leader</strong> where I can deliver measurable value – in both results and ways of working.
-      </p>
-    </section>
-
-    <!-- Experience -->
-    <section class="mb-10 reveal">
-      <h2 class="section-title text-2xl md:text-3xl font-bold">Experience</h2>
-      <div class="space-y-6">
-
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Production & material flow (Lean/5S)</h3>
-          <p class="text-sm text-gray-500">Saint-Gobain Sekurit / Job&Talent · May 17, 2024 – Nov 17, 2025</p>
-          <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Worked in highly automated production with focus on safe and stable material flow.</li>
-            <li>Applied 5S, standard work and Lean-based routines in daily operations.</li>
-            <li>Collaborated with production and planning to reduce disruptions and secure delivery.</li>
-            <li>Supported deviation handling and downtime situations to return quickly to normal operations.</li>
-            <li>Worked with WMS/SAP and followed safety routines and internal instructions.</li>
-          </ul>
-          <p class="mt-3 text-sm text-gray-600">
-            Additional focus: cross-department communication, clear contact routes and smarter allocation of forklift resources (see cases below).
-          </p>
-        </article>
-
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Process Operator</h3>
-          <p class="text-sm text-gray-500">Välinge Innovation · 2022 – 2024</p>
-          <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Monitored and operated production lines with focus on quality and stability.</li>
-            <li>Machine settings and checks to ensure consistent output and standard work.</li>
-            <li>Quality controls and documentation of results.</li>
-            <li>Problem-solving with teams when deviations occurred; supported improvements in workflows.</li>
-          </ul>
-        </article>
-
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Logistics & material handling</h3>
-          <p class="text-sm text-gray-500">ICA Warehouse · 2020 – 2022</p>
-          <ul class="mt-3 list-disc list-inside space-y-1">
-            <li>Order picking/packing and internal transport.</li>
-            <li>Forklift driving (A/B) and safe handling of goods.</li>
-            <li>Participated in inventory counts, safety routines and continuous improvement activities.</li>
-          </ul>
-        </article>
-
+      <div class="hero-contacts">
+        <a href="tel:+46703626388" class="contact-chip">📞 +46 70 362 63 88</a>
+        <a href="mailto:pdojcinovic@proton.me" class="contact-chip">✉️ pdojcinovic@proton.me</a>
+        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" class="contact-chip">🔗 LinkedIn</a>
+        <a href="https://maps.apple.com/?q=Landskrona" target="_blank" class="contact-chip">📍 Landskrona</a>
       </div>
-    </section>
+      <div class="hero-cta">
+        <a href="Petar_Dojcinovic_CV.pdf" download class="btn-primary">⬇️ Download CV</a>
+        <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="btn-outline">View project portfolio →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-val">7+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">3</div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">✓</div>
+        <div class="stat-label">Certified PM</div>
+      </div>
+    </div>
+  </header>
 
-    <!-- Education & Skills -->
-    <section class="mb-10 reveal">
-      <h2 class="section-title text-2xl md:text-3xl font-bold">Education & skills</h2>
-      <div class="space-y-6">
-        <div class="card p-0">
-          <div class="p-6">
-            <h3 class="text-lg font-bold">Certified Project Manager</h3>
-            <p class="text-sm text-gray-500">Distansinstitutet · May 2025</p>
-            <ul class="mt-3 list-disc list-inside space-y-1">
-              <li>Certificate and approved final project.</li>
-              <li>Project phases, risk management, planning, communication and follow-up.</li>
-            </ul>
+  <main class="main">
+
+    <!-- KPI FOCUS -->
+    <div class="section reveal">
+      <div class="section-header">
+        <span class="section-label">Daily KPI Focus</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-cell">
+          <div class="kpi-icon">🛡️</div>
+          <div class="kpi-name">Safety & Standards</div>
+          <div class="kpi-desc">5S, clear routines and compliance that create a safe, predictable operation</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-icon">⚡</div>
+          <div class="kpi-name">Stability & Deviations</div>
+          <div class="kpi-desc">Fast handling of disruptions and downtime — quick return to normal operation</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-icon">🔄</div>
+          <div class="kpi-name">Delivery & Flow</div>
+          <div class="kpi-desc">Coordination between production, planning and logistics for stable throughput</div>
+        </div>
+      </div>
+      <p style="font-size:0.82rem; color:var(--ink-light); font-style:italic;">
+        Example KPIs: delivery precision, deviation frequency, 5S level, incidents/near-misses and flow stability.
+      </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section reveal" id="cv">
+      <div class="section-header">
+        <span class="section-label">Experience</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Production & Material Flow (Lean/5S)</div>
+            <div class="exp-company">Saint-Gobain Sekurit / Job&Talent</div>
+          </div>
+          <span class="exp-period">May 2024 – Nov 2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>Work in highly automated production with focus on safe and stable material flows</li>
+          <li>Hands-on application of 5S, standardized work, and Lean-based methods in daily operations</li>
+          <li>Collaboration with production and planning to reduce disruptions and secure deliveries</li>
+          <li>Support during deviations, downtime, and improvement work — fast return to normal operation</li>
+          <li>Work in WMS/SAP and compliance with safety routines and internal instructions</li>
+        </ul>
+        <div class="exp-note">
+          Extra focus: cross-department communication, clear contact routes, and smarter planning of truck resources.
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Process Operator</div>
+            <div class="exp-company">Välinge Innovation</div>
+          </div>
+          <span class="exp-period">2022 – 2024</span>
+        </div>
+        <ul class="exp-list">
+          <li>Monitoring and control of production lines with focus on quality and stability</li>
+          <li>Machine settings and controls for consistent quality and standardized work methods</li>
+          <li>Quality checks and documentation of results</li>
+          <li>Team-based problem solving during deviations and workflow improvements</li>
+        </ul>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Logistics & Materials Handling</div>
+            <div class="exp-company">ICA Warehouse</div>
+          </div>
+          <span class="exp-period">2020 – 2022</span>
+        </div>
+        <ul class="exp-list">
+          <li>Order picking and packing, plus internal transport</li>
+          <li>Forklift operation (A/B license) and safe goods handling</li>
+          <li>Inventory counts, safety walkthroughs, and daily improvement work</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section reveal">
+      <div class="section-header">
+        <span class="section-label">Education</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-entry">
+        <div>
+          <div class="edu-title">Certified Project Manager</div>
+          <div class="edu-school">Distansinstitutet</div>
+          <div class="edu-desc">Project phases, risk management, planning, communication and follow-up. Approved final project.</div>
+        </div>
+        <span class="edu-year">May 2025</span>
+      </div>
+      <div class="diploma-grid" style="margin-top:1.5rem;">
+        <a href="diplom-petar-dojcinovic.pdf" download class="diploma-card">
+          <span class="diploma-icon">🎓</span>
+          <div>
+            <div class="diploma-title">Diploma – Project Manager</div>
+            <div class="diploma-sub">Download PDF</div>
+          </div>
+        </a>
+        <a href="certifikat-petar-dojcinovic.pdf" download class="diploma-card">
+          <span class="diploma-icon">📜</span>
+          <div>
+            <div class="diploma-title">Certificate – Project Manager</div>
+            <div class="diploma-sub">Download PDF</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section reveal">
+      <div class="section-header">
+        <span class="section-label">Key Skills</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <span class="skill-tag featured">Project Management</span>
+        <span class="skill-tag featured">Lean / 5S</span>
+        <span class="skill-tag featured">Process Improvement</span>
+        <span class="skill-tag">Production</span>
+        <span class="skill-tag">Logistics</span>
+        <span class="skill-tag">Quality & Safety</span>
+        <span class="skill-tag">WMS / SAP</span>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">Risk Management</span>
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Team Coordination</span>
+        <span class="skill-tag">Standardized Work</span>
+        <span class="skill-tag">Deviation Handling</span>
+        <span class="skill-tag">KPI Tracking</span>
+      </div>
+    </div>
+
+    <!-- CASE STUDIES -->
+    <div class="section reveal">
+      <div class="section-header">
+        <span class="section-label">Projects & Case Studies</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-title">Improved Communication Across Four Departments</div>
+          <div class="case-row">
+            <div class="case-item">
+              <div class="case-item-label">Background</div>
+              <div class="case-item-val">Weak information flow created waiting time and unnecessary stops</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Action</div>
+              <div class="case-item-val">Defined clear contact routes and direct numbers per department</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Outcome</div>
+              <div class="case-item-val">Faster responses, smoother flow and better cross-team collaboration</div>
+            </div>
+          </div>
+          <div class="case-note">No formal management role — improvement driven operationally together with colleagues.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-title">Focused Forklift Resources to the Right Department</div>
+          <div class="case-row">
+            <div class="case-item">
+              <div class="case-item-label">Background</div>
+              <div class="case-item-val">Forklift operators scattered across tasks, key priorities missed</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Action</div>
+              <div class="case-item-val">Clarified priorities and linked resources to a specific department with clear ownership</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Outcome</div>
+              <div class="case-item-val">Better focus, less fragmentation, more predictable internal delivery</div>
+            </div>
+          </div>
+          <div class="case-note">Can be described in more detail in interview — what changed, who was informed, and how we followed up.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-title">Production Improvement Work (Lean/5S)</div>
+          <div class="case-row">
+            <div class="case-item">
+              <div class="case-item-label">Purpose</div>
+              <div class="case-item-val">Create more stable flow and clearer standards in daily operations</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Action</div>
+              <div class="case-item-val">5S, standardization and deviation support in collaboration with production team</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Result</div>
+              <div class="case-item-val">Clearer work methods, better order and faster recovery after disruptions</div>
+            </div>
           </div>
         </div>
 
-        <div class="card p-0">
-          <div class="p-6">
-            <h3 class="text-lg font-bold">Key skills</h3>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Project Management</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Continuous Improvement</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Lean / 5S</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Production</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Logistics</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Quality & Safety</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">WMS / SAP</span>
-              <span class="bg-teal-100 text-tealbrand text-xs font-semibold px-2.5 py-1 rounded-full">Microsoft 365</span>
+        <div class="case-card">
+          <div class="case-title">PESISTTEMA — Digital Platform for Urban Safety</div>
+          <div class="case-row">
+            <div class="case-item">
+              <div class="case-item-label">Purpose</div>
+              <div class="case-item-val">Digital platform for public safety, local coordination and information sharing</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Action</div>
+              <div class="case-item-val">Project concept, goals, scope, requirements, stakeholders and roadmap</div>
+            </div>
+            <div class="case-item">
+              <div class="case-item-label">Result</div>
+              <div class="case-item-val">Full concept ready for stakeholder dialogue, pilot and funding application</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Projects / Case Studies -->
-    <section class="mb-10 reveal">
-      <h2 class="section-title text-2xl md:text-3xl font-bold">Projects / Case studies</h2>
-      <div class="grid grid-cols-1 gap-6">
-
-        <!-- CASE 1 -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Case: Improved communication between 4 departments</h3>
-          <p class="mt-2 text-sm text-gray-600">
-            <span class="font-semibold">Background:</span> Communication and information flow were weak between multiple departments, causing delays and unnecessary stop-time in daily operations.
-          </p>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Action:</span> Established clearer contact routes and direct numbers per department, plus a simpler way of sharing operational information.</li>
-            <li><span class="font-semibold">Impact:</span> Faster responses and less time wasted “finding the right person”, resulting in smoother flow and better collaboration.</li>
-            <li><span class="font-semibold">Lesson learned:</span> Small, clear communication standards can significantly improve operations and work environment.</li>
-          </ul>
-          <p class="mt-3 text-xs text-gray-500">
-            Note: I did not have a formal leadership title – I drove the improvement operationally together with colleagues.
-          </p>
-        </article>
-
-        <!-- CASE 2 -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Case: Focused forklift resources to the right area</h3>
-          <p class="mt-2 text-sm text-gray-600">
-            <span class="font-semibold">Background:</span> Forklift drivers were spread across too many tasks, which reduced accuracy and meant critical work was not completed on time.
-          </p>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Action:</span> Clarified priorities and proposed a more dedicated allocation of forklift resources, with clearer responsibility per area.</li>
-            <li><span class="font-semibold">Impact:</span> Better focus, less fragmentation and a more predictable internal flow/delivery.</li>
-            <li><span class="font-semibold">Lesson learned:</span> Clear ownership + priorities beats “everyone helps with everything”.</li>
-          </ul>
-          <p class="mt-3 text-xs text-gray-500">
-            I can explain the setup further in an interview (what changed, how it was communicated, and how we followed up).
-          </p>
-        </article>
-
-        <!-- Project -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Daily CI in production (Lean/5S – practical)</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Goal:</span> Create a more stable flow and clearer standards in daily operations.</li>
-            <li><span class="font-semibold">Work:</span> 5S, standardization and support during deviations/downtime in collaboration with production.</li>
-            <li><span class="font-semibold">Outcome:</span> Clearer ways of working, better order and faster recovery after disruptions.</li>
-          </ul>
-        </article>
-
-        <!-- Project -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Pesisttema Malmö – concept for city & EU funding</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Goal:</span> A digital platform for improved safety, local collaboration and information sharing.</li>
-            <li><span class="font-semibold">Work:</span> Project concept, objectives, scope, requirements, stakeholders and roadmap.</li>
-            <li><span class="font-semibold">Outcome:</span> Structured project documentation ready for dialogue, pilot and application process.</li>
-          </ul>
-        </article>
-
-        <!-- Project -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Airsoft for the full company (project – planning & safety)</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Goal:</span> Strengthen teamwork through a structured team-building day.</li>
-            <li><span class="font-semibold">Work:</span> Planning, safety framework, schedule, coordination and communication.</li>
-            <li><span class="font-semibold">Outcome:</span> Clear agenda and safe setup ready for execution and follow-up.</li>
-          </ul>
-        </article>
-
-        <!-- Project -->
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card">
-          <h3 class="text-lg font-bold">Multi-purpose app (concept & requirements)</h3>
-          <ul class="mt-3 list-disc list-inside space-y-1 text-gray-700">
-            <li><span class="font-semibold">Goal:</span> Combine local listings, events, micro-services and communication in one modern app.</li>
-            <li><span class="font-semibold">Work:</span> Research, information architecture, user flows and requirement structure.</li>
-            <li><span class="font-semibold">Outcome:</span> Concept and structure ready for user testing and further development.</li>
-          </ul>
-        </article>
-
+    <!-- PORTFOLIO LINK -->
+    <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="portfolio-link-card reveal">
+      <div>
+        <div class="plc-label">Want to see more?</div>
+        <div class="plc-title">View my full project portfolio →</div>
       </div>
-    </section>
+      <span class="plc-arrow">↗</span>
+    </a>
 
-    <!-- Diploma & Certificates -->
-    <section class="mb-10 reveal">
-      <h2 class="section-title text-2xl md:text-3xl font-bold">Diploma & certificates</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
-          <h3 class="text-lg font-bold mb-2">Diploma – Project Management</h3>
-          <p class="text-xs text-gray-500 mb-3">
-            Official diploma confirming completed education and approved performance.
-          </p>
-          <embed src="diplom-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
-          <a href="diplom-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">
-            ⬇️ Download Diploma
-          </a>
-        </article>
-        <article class="bg-gray-50 p-6 rounded-xl shadow-sm card text-center">
-          <h3 class="text-lg font-bold mb-2">Certificate – Project Management</h3>
-          <p class="text-xs text-gray-500 mb-3">
-            Certificate with an approved final project in project management.
-          </p>
-          <embed src="certifikat-petar-dojcinovic.pdf" type="application/pdf" class="w-full h-64 rounded" />
-          <a href="certifikat-petar-dojcinovic.pdf" download class="inline-block mt-3 text-tealbrand font-semibold hover:underline">
-            ⬇️ Download Certificate
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mt-10 text-center text-gray-500 text-sm reveal">
-      <p>&copy; 2025 Petar Dojčinović. All rights reserved.</p>
-    </footer>
   </main>
 
-  <script>
-    // Simple scroll-reveal for .reveal elements
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      })
-    },{threshold: 0.1});
+  <footer>
+    © 2025 Petar Dojčinović · All rights reserved
+  </footer>
 
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
   </script>
 
 </body>
