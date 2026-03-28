@@ -5,22 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Petar Dojčinović – Portfolio</title>
   <meta name="description" content="Certifierad projektledare med erfarenhet inom produktion, logistik och processförbättring."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #faf9f7;
-      --surface: #ffffff;
-      --surface2: #f4f2ee;
-      --border: #e8e4dc;
-      --border-dark: #d0cab8;
-      --ink: #1a1814;
-      --ink-mid: #4a4540;
-      --ink-light: #8a8278;
-      --teal: #2a6b6b;
-      --teal-light: #3d8f8f;
-      --teal-pale: #eef5f5;
-      --gold: #b8860b;
-      --gold-pale: #fdf8ee;
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: rgba(255,255,255,0.08);
+      --border-bright: rgba(255,255,255,0.18);
+      --ink: #f0ede8;
+      --ink-mid: #a09a90;
+      --ink-dim: #5a5550;
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-glow: rgba(201,168,76,0.25);
+      --teal: #4a9e9e;
+      --teal-dim: rgba(74,158,158,0.12);
+      --red: #c0392b;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,662 +32,848 @@
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* LANG SWITCHER */
-    .lang-bar {
-      position: fixed; top: 0; right: 0; left: 0; z-index: 200;
-      display: flex; justify-content: flex-end; align-items: center;
-      padding: 0.7rem 3rem;
-      background: rgba(250,249,247,0.92);
-      backdrop-filter: blur(12px);
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(13,13,13,0.8);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .lang-nav { display: flex; align-items: center; gap: 1.5rem; }
-    .lang-nav a {
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; color: var(--ink-light); transition: color 0.2s;
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.9rem;
+      letter-spacing: 0.06em; color: var(--ink);
+      text-decoration: none;
     }
-    .lang-nav a.active { color: var(--teal); font-weight: 600; }
-    .lang-nav a:hover { color: var(--ink); }
-    .lang-sep { color: var(--border-dark); font-size: 0.7rem; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.75rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-lang {
+      display: flex; gap: 0.5rem; align-items: center;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border-bright);
+    }
+    .nav-lang a {
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-lang a.active { color: var(--gold); font-weight: 600; }
 
     /* HERO */
     .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* LEFT PANEL */
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 7rem 3rem 4rem;
-      max-width: 900px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 3rem; align-items: end;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-left {}
-
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 1.2rem;
-      animation: fadeUp 0.5s ease both;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 24px; height: 1px; background: var(--teal);
+      position: relative; z-index: 2;
+      border-right: 1px solid var(--border);
     }
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 700; line-height: 1.05;
-      letter-spacing: -0.01em; color: var(--ink);
-      margin-bottom: 0.6rem;
-      animation: fadeUp 0.5s 0.1s ease both;
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards;
     }
+    .hero-tag::before { content: '◆'; font-size: 0.4rem; }
 
-    .hero-role {
-      font-size: 0.9rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-light);
-      margin-bottom: 1.4rem;
-      animation: fadeUp 0.5s 0.15s ease both;
+    .hero-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400; line-height: 0.95;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.7s 0.3s ease forwards;
+    }
+    .hero-name em {
+      font-style: italic; color: var(--gold);
     }
 
     .hero-bio {
-      font-size: 1rem; color: var(--ink-mid); max-width: 560px;
-      line-height: 1.8; margin-bottom: 2rem;
-      animation: fadeUp 0.5s 0.2s ease both;
+      font-size: 0.92rem; color: var(--ink-mid);
+      max-width: 440px; line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.6s 0.45s ease forwards;
     }
 
     .hero-contacts {
-      display: flex; flex-wrap: wrap; gap: 0.8rem;
-      animation: fadeUp 0.5s 0.25s ease both;
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.55s ease forwards;
     }
-    .contact-chip {
+    .chip {
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.4rem 0.9rem;
-      border: 1px solid var(--border-dark);
-      border-radius: 2rem; font-size: 0.8rem;
+      border: 1px solid var(--border-bright);
+      border-radius: 2rem; font-size: 0.76rem;
       color: var(--ink-mid); text-decoration: none;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      transition: all 0.2s;
+      background: transparent;
     }
-    .contact-chip:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }
+    .chip:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
 
-    /* HERO RIGHT - quick stats */
-    .hero-stats {
-      display: flex; flex-direction: column; gap: 1.5rem;
-      padding-bottom: 0.5rem;
-      animation: fadeIn 0.8s 0.3s ease both;
-    }
-    .stat-item { text-align: right; }
-    .stat-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700;
-      color: var(--teal); line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.72rem; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--ink-light);
-    }
-
-    /* CTA BUTTONS */
     .hero-cta {
-      display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;
-      animation: fadeUp 0.5s 0.3s ease both;
+      display: flex; gap: 0.8rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.6s 0.65s ease forwards;
     }
-    .btn-primary {
-      padding: 0.7rem 1.6rem;
-      background: var(--teal); color: #fff;
-      border: none; border-radius: 0.3rem;
-      font-family: 'DM Sans', sans-serif; font-weight: 500;
-      font-size: 0.82rem; letter-spacing: 0.06em;
+    .btn-gold {
+      padding: 0.75rem 1.8rem;
+      background: var(--gold); color: #0d0d0d;
+      border: none; border-radius: 0.25rem;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 0.76rem; letter-spacing: 0.1em;
       text-transform: uppercase; text-decoration: none;
-      transition: background 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .btn-primary:hover { background: var(--teal-light); }
-    .btn-outline {
-      padding: 0.7rem 1.6rem;
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--border-dark); border-radius: 0.3rem;
-      font-family: 'DM Sans', sans-serif; font-weight: 500;
-      font-size: 0.82rem; letter-spacing: 0.06em;
+    .btn-gold:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      padding: 0.75rem 1.8rem;
+      background: transparent; color: var(--ink-mid);
+      border: 1px solid var(--border-bright); border-radius: 0.25rem;
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: 0.76rem; letter-spacing: 0.1em;
       text-transform: uppercase; text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
-
-    /* MAIN LAYOUT */
-    .main { max-width: 900px; margin: 0 auto; padding: 0 3rem 5rem; }
-
-    /* SECTION */
-    .section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
-    .section:last-child { border-bottom: none; }
-
-    .section-header {
-      display: flex; align-items: center; gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .section-label {
-      font-size: 0.68rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--teal);
-      white-space: nowrap;
-    }
-    .section-line {
-      flex: 1; height: 1px; background: var(--border);
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem; font-weight: 600;
-      color: var(--ink); margin-bottom: 0.4rem;
-    }
-    .section-sub { font-size: 0.9rem; color: var(--ink-light); margin-bottom: 1.8rem; }
-
-    /* KPI PILLS ROW */
-    .kpi-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: 0.6rem;
-      overflow: hidden; margin-bottom: 2rem;
-    }
-    .kpi-cell {
-      background: var(--surface); padding: 1.4rem 1.2rem;
-      transition: background 0.2s;
-    }
-    .kpi-cell:hover { background: var(--teal-pale); }
-    .kpi-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
-    .kpi-name {
-      font-weight: 600; font-size: 0.85rem;
-      color: var(--ink); margin-bottom: 0.2rem;
-    }
-    .kpi-desc { font-size: 0.78rem; color: var(--ink-light); line-height: 1.5; }
-
-    /* EXPERIENCE ENTRIES */
-    .exp-entry { margin-bottom: 2.5rem; }
-    .exp-entry:last-child { margin-bottom: 0; }
-
-    .exp-header {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    .exp-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 600; color: var(--ink);
-    }
-    .exp-period {
-      font-size: 0.75rem; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--ink-light);
-      white-space: nowrap; padding-top: 0.25rem;
-    }
-    .exp-company {
-      font-size: 0.82rem; color: var(--teal);
-      font-weight: 500; margin-bottom: 0.8rem;
-      letter-spacing: 0.04em;
-    }
-    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .exp-list li {
-      font-size: 0.88rem; color: var(--ink-mid);
-      display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5;
-    }
-    .exp-list li::before {
-      content: '–'; color: var(--teal);
-      font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem;
-    }
-    .exp-note {
-      margin-top: 0.7rem; padding: 0.6rem 0.9rem;
-      background: var(--teal-pale); border-left: 2px solid var(--teal);
-      border-radius: 0 0.3rem 0.3rem 0;
-      font-size: 0.8rem; color: var(--ink-mid); font-style: italic;
-    }
-
-    /* SKILLS GRID */
-    .skills-grid {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .skill-tag {
-      padding: 0.35rem 0.85rem;
-      border: 1px solid var(--border-dark);
-      border-radius: 2rem; font-size: 0.78rem;
-      color: var(--ink-mid); background: var(--surface);
       transition: all 0.2s;
     }
-    .skill-tag:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }
-    .skill-tag.featured {
-      background: var(--teal); color: #fff;
-      border-color: var(--teal);
+    .btn-ghost:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+    /* RIGHT PANEL — visual hook */
+    .hero-right {
+      position: relative; overflow: hidden;
+      opacity: 0; animation: fadeIn 1.2s 0.4s ease forwards;
+    }
+
+    .hero-right-inner {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 2rem;
+    }
+
+    /* Big radial glow */
+    .hero-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    }
+
+    /* Big rotated text label */
+    .hero-rotate-label {
+      position: absolute; top: 50%; right: -2.5rem;
+      transform: rotate(90deg) translateY(-50%);
+      transform-origin: right center;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--ink-dim);
+    }
+
+    /* Stats floating cards */
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; width: 100%; max-width: 380px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: 1rem; overflow: hidden;
+    }
+    .stat-card {
+      background: var(--surface); padding: 2rem 1.5rem;
+      display: flex; flex-direction: column;
+      gap: 0.3rem; transition: background 0.3s;
+    }
+    .stat-card:hover { background: var(--surface2); }
+    .stat-val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3.2rem; line-height: 1;
+      color: var(--gold); font-weight: 400;
+    }
+    .stat-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim);
+    }
+    .stat-sub { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.4; }
+
+    /* Currently working badge */
+    .current-badge {
+      margin-top: 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2rem; background: var(--gold-dim);
+      font-size: 0.78rem; color: var(--gold);
+      font-family: 'Syne', sans-serif; letter-spacing: 0.04em;
+    }
+    .pulse {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(74,222,128,0.4);
+      animation: pulse 2s infinite;
+    }
+
+    /* MAIN */
+    main { position: relative; z-index: 1; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 3rem; }
+
+    /* SECTION */
+    .section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .sec-eyebrow {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .sec-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .sec-line { flex: 1; height: 1px; background: var(--border); }
+
+    .sec-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400; color: var(--ink);
+      margin-bottom: 0.5rem; line-height: 1.1;
+    }
+    .sec-sub { font-size: 0.88rem; color: var(--ink-mid); margin-bottom: 2.5rem; }
+
+    /* KPI GRID */
+    .kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 0.8rem; overflow: hidden; }
+    .kpi-cell { background: var(--surface); padding: 1.8rem 1.5rem; transition: background 0.2s; }
+    .kpi-cell:hover { background: var(--surface2); }
+    .kpi-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .kpi-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--ink); margin-bottom: 0.3rem; }
+    .kpi-desc { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.5; }
+
+    /* TIMELINE / EXPERIENCE */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-meta { padding-top: 0.2rem; }
+    .exp-period {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.4rem;
+    }
+    .exp-company {
+      font-size: 0.82rem; color: var(--gold);
+      font-weight: 500; letter-spacing: 0.04em;
+    }
+    .exp-company-sub {
+      font-size: 0.72rem; color: var(--ink-dim);
+      margin-top: 0.15rem;
+    }
+
+    .exp-content {}
+    .exp-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem; color: var(--ink);
+      margin-bottom: 0.8rem; line-height: 1.2;
+    }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .exp-list li {
+      font-size: 0.86rem; color: var(--ink-mid);
+      display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.55;
+    }
+    .exp-list li::before { content: '–'; color: var(--gold); flex-shrink: 0; }
+
+    /* APPROVED PROJECTS CARDS */
+    .approved-projects {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .proj-card {
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 0.6rem; padding: 1.2rem 1.4rem;
+    }
+    .proj-card-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .proj-card-tag::before { content: '✓'; font-size: 0.7rem; }
+    .proj-card-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.35; }
+    .proj-card-desc { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.5; }
+
+    .exp-note {
+      margin-top: 0.8rem; padding: 0.65rem 1rem;
+      background: var(--teal-dim);
+      border-left: 2px solid var(--teal);
+      border-radius: 0 0.3rem 0.3rem 0;
+      font-size: 0.78rem; color: var(--ink-mid); font-style: italic;
     }
 
     /* CASE STUDIES */
-    .cases-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+    .cases { display: flex; flex-direction: column; gap: 1.2rem; }
     .case-card {
       border: 1px solid var(--border);
-      border-radius: 0.6rem; padding: 1.5rem;
+      border-radius: 0.8rem; padding: 1.8rem;
       background: var(--surface);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      display: grid; grid-template-columns: 1fr 3fr;
+      gap: 2rem; align-items: start;
+      transition: border-color 0.2s, background 0.2s;
       position: relative; overflow: hidden;
     }
-    .case-card::before {
-      content: ''; position: absolute; top: 0; left: 0; bottom: 0;
-      width: 3px; background: var(--teal);
-      transform: scaleY(0); transform-origin: top;
-      transition: transform 0.3s ease;
+    .case-card::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--gold);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.35s ease;
     }
-    .case-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(42,107,107,0.08); }
-    .case-card:hover::before { transform: scaleY(1); }
+    .case-card:hover { border-color: rgba(201,168,76,0.3); background: var(--surface2); }
+    .case-card:hover::after { transform: scaleY(1); }
 
+    .case-meta {}
+    .case-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3rem; color: var(--border-bright);
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .case-type {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--teal);
+    }
+    .case-body {}
     .case-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 600; color: var(--ink);
-      margin-bottom: 0.8rem;
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.15rem; color: var(--ink);
+      margin-bottom: 1rem; line-height: 1.25;
     }
-    .case-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 0.5rem; }
-    .case-item { }
-    .case-item-label {
-      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-light); margin-bottom: 0.2rem;
+    .case-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .case-field-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim); margin-bottom: 0.25rem;
     }
-    .case-item-val { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.4; }
-    .case-note {
-      font-size: 0.78rem; color: var(--ink-light);
-      font-style: italic; margin-top: 0.8rem;
-      padding-top: 0.8rem; border-top: 1px solid var(--border);
+    .case-field-val { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.4; }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill {
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border-bright);
+      border-radius: 2rem; font-size: 0.76rem;
+      color: var(--ink-mid); transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
     }
+    .skill:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .skill.f { background: var(--gold); color: #0d0d0d; border-color: var(--gold); font-weight: 500; }
 
     /* EDUCATION */
-    .edu-entry {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 2rem;
-      padding: 1.2rem 0; border-bottom: 1px solid var(--border);
+    .edu-entries { display: flex; flex-direction: column; gap: 0; }
+    .edu-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 2rem; padding: 1.8rem 0; border-bottom: 1px solid var(--border);
     }
-    .edu-entry:last-child { border-bottom: none; }
-    .edu-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 600; color: var(--ink);
-      margin-bottom: 0.2rem;
-    }
-    .edu-school { font-size: 0.82rem; color: var(--teal); margin-bottom: 0.4rem; }
-    .edu-desc { font-size: 0.82rem; color: var(--ink-light); }
-    .edu-year {
-      font-size: 0.75rem; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--ink-light);
-      white-space: nowrap;
-    }
+    .edu-row:last-child { border-bottom: none; }
+    .edu-title { font-family: 'Instrument Serif', serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.8rem; color: var(--gold); margin-bottom: 0.4rem; }
+    .edu-desc { font-size: 0.8rem; color: var(--ink-mid); }
+    .edu-year { font-family: 'Syne', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); white-space: nowrap; padding-top: 0.3rem; }
 
-    /* DIPLOMAS */
-    .diploma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .diploma-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
     .diploma-card {
-      border: 1px solid var(--border); border-radius: 0.6rem;
-      padding: 1.2rem 1.5rem; background: var(--gold-pale);
       display: flex; align-items: center; gap: 1rem;
-      text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s;
+      padding: 1.1rem 1.4rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 0.6rem; background: var(--gold-dim);
+      text-decoration: none; transition: all 0.2s;
     }
-    .diploma-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,134,11,0.1); }
-    .diploma-icon { font-size: 1.8rem; flex-shrink: 0; }
-    .diploma-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
-    .diploma-sub { font-size: 0.75rem; color: var(--ink-light); }
+    .diploma-card:hover { border-color: var(--gold); }
+    .diploma-icon { font-size: 1.7rem; flex-shrink: 0; }
+    .diploma-title { font-size: 0.86rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; }
+    .diploma-sub { font-size: 0.72rem; color: var(--ink-mid); }
 
-    /* PORTFOLIO LINK */
-    .portfolio-link-card {
-      background: var(--teal); border-radius: 0.6rem;
-      padding: 2rem; display: flex;
-      align-items: center; justify-content: space-between;
-      gap: 2rem; text-decoration: none; margin-top: 2rem;
-      transition: background 0.2s;
+    /* PORTFOLIO BANNER */
+    .portfolio-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; padding: 2.5rem 3rem;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(74,158,158,0.08) 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 1rem; text-decoration: none; margin-top: 2rem;
+      transition: all 0.3s;
     }
-    .portfolio-link-card:hover { background: var(--teal-light); }
-    .plc-text {}
-    .plc-label {
-      font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.6);
-      margin-bottom: 0.3rem;
-    }
-    .plc-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; color: #fff; font-weight: 600;
-    }
-    .plc-arrow { font-size: 1.5rem; color: rgba(255,255,255,0.7); }
+    .portfolio-banner:hover { border-color: var(--gold); background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(74,158,158,0.12) 100%); }
+    .pb-label { font-family: 'Syne', sans-serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .pb-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; color: var(--ink); }
+    .pb-arrow { font-size: 2rem; color: var(--gold); }
 
     /* FOOTER */
     footer {
       text-align: center; padding: 2rem 3rem;
-      font-size: 0.78rem; color: var(--ink-light);
+      font-size: 0.75rem; color: var(--ink-dim);
       border-top: 1px solid var(--border);
     }
 
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+
     /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:none; } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
 
     /* RESPONSIVE */
-    @media (max-width: 750px) {
-      .lang-bar { padding: 0.7rem 1.5rem; }
-      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2rem; }
-      .hero-stats { flex-direction: row; justify-content: flex-start; }
-      .stat-item { text-align: left; }
-      .main { padding: 0 1.5rem 4rem; }
-      .kpi-row { grid-template-columns: 1fr; }
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 6rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { min-height: 60vw; }
+      .container { padding: 0 1.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .exp-meta { display: flex; gap: 1rem; align-items: baseline; }
+      .case-card { grid-template-columns: 1fr; }
       .case-row { grid-template-columns: 1fr; }
-      .diploma-grid { grid-template-columns: 1fr; }
-      .exp-header { flex-direction: column; gap: 0.2rem; }
-      .edu-entry { flex-direction: column; gap: 0.3rem; }
-      .portfolio-link-card { flex-direction: column; align-items: flex-start; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .diploma-row { grid-template-columns: 1fr; }
+      .approved-projects { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- LANG BAR -->
-  <div class="lang-bar">
-    <div class="lang-nav">
+  <nav>
+    <a href="#" class="nav-brand">Petar <span>D.</span></a>
+    <div class="nav-links">
+      <a href="#erfarenhet">Erfarenhet</a>
+      <a href="#projekt">Projekt</a>
+      <a href="#utbildning">Utbildning</a>
+      <div class="nav-lang">
+        <a href="index.html" class="active">SV</a>
+        <span style="color:var(--border-bright)">·</span>
+        <a href="index-en.html">EN</a>
+      </div>
+    </div>
+    <div class="nav-lang" style="display:none;" id="mobile-lang">
       <a href="index.html" class="active">SV</a>
-      <span class="lang-sep">·</span>
+      <span style="color:var(--border-bright)">·</span>
       <a href="index-en.html">EN</a>
     </div>
-  </div>
+  </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">Projektledare · Operations · Förbättring</div>
-      <h1>Petar<br>Dojčinović</h1>
-      <p class="hero-role">Landskrona, Sverige</p>
+      <div class="hero-tag">Projektledare · Operations · Förbättring</div>
+      <h1 class="hero-name">Petar<br><em>Dojčinović</em></h1>
       <p class="hero-bio">
-        Certifierad projektledare med över sju års erfarenhet inom produktion, logistik och processförbättring
-        i högautomatiserad industrimiljö. Jag kombinerar operativ förståelse med strukturerat förbättringsarbete
-        (Lean/5S) för att skapa stabila flöden och tydliga resultat.
+        Certifierad projektledare med över sju års erfarenhet inom produktion, logistik och processförbättring i industriell miljö. Kombinerar operativ förståelse med strukturerat förbättringsarbete — Lean, 5S och faktiska resultat.
       </p>
       <div class="hero-contacts">
-        <a href="tel:+46703626388" class="contact-chip">📞 +46 70 362 63 88</a>
-        <a href="mailto:pdojcinovic@proton.me" class="contact-chip">✉️ pdojcinovic@proton.me</a>
-        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" class="contact-chip">🔗 LinkedIn</a>
-        <a href="https://maps.apple.com/?q=Landskrona" target="_blank" class="contact-chip">📍 Landskrona</a>
+        <a href="tel:+46703626388" class="chip">📞 +46 70 362 63 88</a>
+        <a href="mailto:pdojcinovic@proton.me" class="chip">✉️ pdojcinovic@proton.me</a>
+        <a href="https://www.linkedin.com/in/petar-dojcinovic-847974196/" target="_blank" class="chip">🔗 LinkedIn</a>
+        <a href="https://maps.apple.com/?q=Landskrona" target="_blank" class="chip">📍 Landskrona</a>
       </div>
       <div class="hero-cta">
-        <a href="Petar_Dojcinovic_CV.pdf" download class="btn-primary">⬇️ Ladda ner CV</a>
-        <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="btn-outline">Se projektportfolio →</a>
+        <a href="Petar_Dojcinovic_CV.pdf" download class="btn-gold">⬇ Ladda ner CV</a>
+        <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="btn-ghost">Projektportfolio →</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-val">7+</div>
-        <div class="stat-label">Års erfarenhet</div>
+
+    <div class="hero-right">
+      <div class="hero-glow"></div>
+      <div class="hero-right-inner">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-val">7+</div>
+            <div class="stat-label">Års erfarenhet</div>
+            <div class="stat-sub">Produktion, logistik & lager</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">3</div>
+            <div class="stat-label">Branscher</div>
+            <div class="stat-sub">Glas, golv, livsmedel</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">2</div>
+            <div class="stat-label">Godkända projekt</div>
+            <div class="stat-sub">Initierade & drivna</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">✓</div>
+            <div class="stat-label">Certifierad PL</div>
+            <div class="stat-sub">Distansinstitutet 2025</div>
+          </div>
+        </div>
+        <div class="current-badge">
+          <span class="pulse"></span>
+          Nuvarande: Lantmännen, Eslöv
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-val">3</div>
-        <div class="stat-label">Branscher</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">✓</div>
-        <div class="stat-label">Certifierad PL</div>
-      </div>
+      <div class="hero-rotate-label">Landskrona · Sverige · Skåne</div>
     </div>
   </header>
 
-  <main class="main">
+  <main>
+    <div class="container">
 
-    <!-- KPI FOCUS -->
-    <div class="section reveal">
-      <div class="section-header">
-        <span class="section-label">KPI-fokus</span>
-        <div class="section-line"></div>
-      </div>
-      <div class="kpi-row">
-        <div class="kpi-cell">
-          <div class="kpi-icon">🛡️</div>
-          <div class="kpi-name">Säkerhet & standard</div>
-          <div class="kpi-desc">5S, tydliga rutiner och efterlevnad som skapar trygg och förutsägbar drift</div>
+      <!-- KPI -->
+      <div class="section reveal">
+        <div class="sec-eyebrow">
+          <span class="sec-tag">Operativt fokus</span>
+          <div class="sec-line"></div>
         </div>
-        <div class="kpi-cell">
-          <div class="kpi-icon">⚡</div>
-          <div class="kpi-name">Stabilitet & avvikelser</div>
-          <div class="kpi-desc">Snabb hantering av störningar och driftstopp — snabbt tillbaka till normalläge</div>
-        </div>
-        <div class="kpi-cell">
-          <div class="kpi-icon">🔄</div>
-          <div class="kpi-name">Leverans & flöde</div>
-          <div class="kpi-desc">Koordinering mellan produktion, planering och logistik för stabila flöden</div>
-        </div>
-      </div>
-      <p style="font-size:0.82rem; color:var(--ink-light); font-style:italic;">
-        Exempel på KPI: leveransprecision, avvikelsefrekvens, 5S-nivå, incidenter/tillbud och stabilitet i flödet.
-      </p>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="section reveal" id="cv">
-      <div class="section-header">
-        <span class="section-label">Erfarenhet</span>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="exp-entry">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Produktion & materialflöde</div>
-            <div class="exp-company">Saint-Gobain Sekurit / Job&Talent</div>
+        <h2 class="sec-title">Vad jag levererar</h2>
+        <p class="sec-sub">Tre kärnområden jag konsekvent bidrar till i varje roll</p>
+        <div class="kpi-grid">
+          <div class="kpi-cell">
+            <div class="kpi-icon">🛡️</div>
+            <div class="kpi-name">Säkerhet & standard</div>
+            <div class="kpi-desc">5S, tydliga rutiner och efterlevnad som skapar trygg och förutsägbar drift</div>
           </div>
-          <span class="exp-period">Maj 2024 – Nov 2025</span>
-        </div>
-        <ul class="exp-list">
-          <li>Arbete i högautomatiserad produktion med fokus på säkra och stabila materialflöden</li>
-          <li>Praktisk tillämpning av 5S, standardarbete och Lean-baserade arbetssätt i vardagen</li>
-          <li>Samverkan med produktion och planering för att minska störningar och säkra leveranser</li>
-          <li>Stöd vid avvikelser, driftstopp och förbättringsarbete — snabbt tillbaka till normal drift</li>
-          <li>Arbete i WMS/SAP samt efterlevnad av säkerhetsrutiner och interna instruktioner</li>
-        </ul>
-        <div class="exp-note">
-          Extra fokus: kommunikation mellan avdelningar, tydliga kontaktvägar och smartare planering av truckresurser.
-        </div>
-      </div>
-
-      <div class="exp-entry">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Processoperatör</div>
-            <div class="exp-company">Välinge Innovation</div>
+          <div class="kpi-cell">
+            <div class="kpi-icon">⚡</div>
+            <div class="kpi-name">Stabilitet & avvikelser</div>
+            <div class="kpi-desc">Snabb hantering av störningar — snabbt tillbaka till normalläge</div>
           </div>
-          <span class="exp-period">2022 – 2024</span>
-        </div>
-        <ul class="exp-list">
-          <li>Övervakning och styrning av produktionslinjer med fokus på kvalitet och stabilitet</li>
-          <li>Maskininställningar och kontroller för jämn kvalitet och standardiserat arbetssätt</li>
-          <li>Kvalitetskontroller samt dokumentation av resultat</li>
-          <li>Problemlösning i team vid avvikelser samt förbättringar i arbetsflöden</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Logistik & materialhantering</div>
-            <div class="exp-company">ICA Lager</div>
+          <div class="kpi-cell">
+            <div class="kpi-icon">🔄</div>
+            <div class="kpi-name">Leverans & flöde</div>
+            <div class="kpi-desc">Koordinering mellan produktion, planering och logistik för stabila flöden</div>
           </div>
-          <span class="exp-period">2020 – 2022</span>
         </div>
-        <ul class="exp-list">
-          <li>Plock och pack enligt order samt interntransport</li>
-          <li>Truckkörning (A/B) och säker hantering av varor</li>
-          <li>Inventeringar, säkerhetsgenomgångar och förbättringsarbete i vardagen</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="section reveal">
-      <div class="section-header">
-        <span class="section-label">Utbildning</span>
-        <div class="section-line"></div>
       </div>
 
-      <div class="edu-entry">
-        <div>
-          <div class="edu-title">Certifierad projektledare</div>
-          <div class="edu-school">Distansinstitutet</div>
-          <div class="edu-desc">Projektfaser, riskhantering, planering, kommunikation och uppföljning. Godkänt examensprojekt.</div>
+      <!-- EXPERIENCE -->
+      <div class="section reveal" id="erfarenhet">
+        <div class="sec-eyebrow">
+          <span class="sec-tag">Arbetslivserfarenhet</span>
+          <div class="sec-line"></div>
         </div>
-        <span class="edu-year">Maj 2025</span>
-      </div>
+        <h2 class="sec-title">Erfarenhet</h2>
 
-      <div class="diploma-grid" style="margin-top:1.5rem;">
-        <a href="diplom-petar-dojcinovic.pdf" download class="diploma-card">
-          <span class="diploma-icon">🎓</span>
-          <div>
-            <div class="diploma-title">Diplom – Projektledare</div>
-            <div class="diploma-sub">Ladda ner PDF</div>
+        <div class="timeline">
+
+          <!-- LANTMANNEN -->
+          <div class="exp-item">
+            <div class="exp-meta">
+              <div class="exp-period">Nov 2025 – Nu</div>
+              <div class="exp-company">Lantmännen</div>
+              <div class="exp-company-sub">Eslövs kommun, Skåne · Heltid</div>
+            </div>
+            <div class="exp-content">
+              <div class="exp-title">Truckförare & Projektinitiativtagare</div>
+              <ul class="exp-list">
+                <li>Arbete i produktions- och lagermiljö med fokus på materialförsörjning, maskinstöd och effektiva arbetsflöden</li>
+                <li>Ansvarar för praktisk utbildning av nya medarbetare inom truckkörning, lagerhantering och interna system — hittills utbildat 3 medarbetare</li>
+                <li>Identifierade brister och driver aktivt förbättrings- och utvecklingsprojekt vid sidan av ordinarie arbetsuppgifter</li>
+              </ul>
+              <div class="approved-projects">
+                <div class="proj-card">
+                  <div class="proj-card-tag">Godkänt av ledningen</div>
+                  <div class="proj-card-title">Onboarding-program för nyanställda</div>
+                  <div class="proj-card-desc">Identifierade brister i introduktionsprocessen och utformade ett strukturerat onboarding-program — presenterat och godkänt av ledningen.</div>
+                </div>
+                <div class="proj-card">
+                  <div class="proj-card-tag">Antaget av chefer</div>
+                  <div class="proj-card-title">Processoptimering mellan avdelningar</div>
+                  <div class="proj-card-desc">Initierade och genomförde ett förbättringsprojekt för att effektivisera arbetsflöden och kommunikation mellan avdelningar.</div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- SAINT-GOBAIN -->
+          <div class="exp-item">
+            <div class="exp-meta">
+              <div class="exp-period">Maj 2024 – Nov 2025</div>
+              <div class="exp-company">Saint-Gobain Sekurit</div>
+              <div class="exp-company-sub">via Job&Talent</div>
+            </div>
+            <div class="exp-content">
+              <div class="exp-title">Produktion & materialflöde</div>
+              <ul class="exp-list">
+                <li>Arbete i högautomatiserad produktion med fokus på säkra och stabila materialflöden</li>
+                <li>Praktisk tillämpning av 5S, standardarbete och Lean-baserade arbetssätt i vardagen</li>
+                <li>Samverkan med produktion och planering för att minska störningar och säkra leveranser</li>
+                <li>Stöd vid avvikelser, driftstopp och förbättringsarbete — snabbt tillbaka till normal drift</li>
+                <li>Arbete i WMS/SAP samt efterlevnad av säkerhetsrutiner och interna instruktioner</li>
+              </ul>
+              <div class="exp-note">Referens: Linus Wahlgren, Job&Talent</div>
+            </div>
+          </div>
+
+          <!-- VÄLINGE -->
+          <div class="exp-item">
+            <div class="exp-meta">
+              <div class="exp-period">2022 – 2024</div>
+              <div class="exp-company">Välinge Innovation</div>
+            </div>
+            <div class="exp-content">
+              <div class="exp-title">Processoperatör</div>
+              <ul class="exp-list">
+                <li>Övervakning och styrning av produktionslinjer med fokus på kvalitet och stabilitet</li>
+                <li>Maskininställningar och kontroller för jämn kvalitet och standardiserat arbetssätt</li>
+                <li>Kvalitetskontroller samt dokumentation av resultat</li>
+                <li>Problemlösning i team vid avvikelser samt förbättringar i arbetsflöden</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ICA -->
+          <div class="exp-item">
+            <div class="exp-meta">
+              <div class="exp-period">2020 – 2022</div>
+              <div class="exp-company">ICA Lager</div>
+            </div>
+            <div class="exp-content">
+              <div class="exp-title">Logistik & materialhantering</div>
+              <ul class="exp-list">
+                <li>Plock och pack enligt order samt interntransport</li>
+                <li>Truckkörning (A/B) och säker hantering av varor</li>
+                <li>Inventeringar, säkerhetsgenomgångar och förbättringsarbete i vardagen</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="section reveal">
+        <div class="sec-eyebrow">
+          <span class="sec-tag">Kompetenser</span>
+          <div class="sec-line"></div>
+        </div>
+        <h2 class="sec-title">Nyckelfärdigheter</h2>
+        <div class="skills-grid">
+          <span class="skill f">Projektledning</span>
+          <span class="skill f">Lean / 5S</span>
+          <span class="skill f">Förbättringsarbete</span>
+          <span class="skill">Produktion</span>
+          <span class="skill">Logistik</span>
+          <span class="skill">Kvalitet & säkerhet</span>
+          <span class="skill">WMS / SAP</span>
+          <span class="skill">Microsoft 365</span>
+          <span class="skill">Riskhantering</span>
+          <span class="skill">Kommunikation</span>
+          <span class="skill">Teamkoordinering</span>
+          <span class="skill">Standardarbete</span>
+          <span class="skill">Avvikelsehantering</span>
+          <span class="skill">KPI-uppföljning</span>
+          <span class="skill">Onboarding & upplärning</span>
+          <span class="skill">Truck A/B</span>
+        </div>
+      </div>
+
+      <!-- CASE STUDIES -->
+      <div class="section reveal" id="projekt">
+        <div class="sec-eyebrow">
+          <span class="sec-tag">Projekt & Case Studies</span>
+          <div class="sec-line"></div>
+        </div>
+        <h2 class="sec-title">Initiativ & resultat</h2>
+        <p class="sec-sub">Konkreta förbättringar drivna operativt — utan formell chefsroll</p>
+
+        <div class="cases">
+
+          <div class="case-card">
+            <div class="case-meta">
+              <div class="case-num">01</div>
+              <div class="case-type">Kommunikation</div>
+            </div>
+            <div class="case-body">
+              <div class="case-title">Förbättrad kommunikation mellan fyra avdelningar</div>
+              <div class="case-row">
+                <div>
+                  <div class="case-field-label">Bakgrund</div>
+                  <div class="case-field-val">Svagt informationsflöde skapade väntetider och onödiga stopp</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Åtgärd</div>
+                  <div class="case-field-val">Tydliga kontaktvägar och direktnummer per avdelning</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Effekt</div>
+                  <div class="case-field-val">Snabbare svar, smidigare flöde och bättre samarbete</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-meta">
+              <div class="case-num">02</div>
+              <div class="case-type">Resursoptimering</div>
+            </div>
+            <div class="case-body">
+              <div class="case-title">Fokuserade truckförare till rätt avdelning</div>
+              <div class="case-row">
+                <div>
+                  <div class="case-field-label">Bakgrund</div>
+                  <div class="case-field-val">Truckresursen spridd — viktiga uppgifter hanns inte med</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Åtgärd</div>
+                  <div class="case-field-val">Tydligare prioriteringar och koppling av resursen till specifik avdelning</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Effekt</div>
+                  <div class="case-field-val">Bättre fokus, mindre splittring och mer förutsägbar leverans</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-meta">
+              <div class="case-num">03</div>
+              <div class="case-type">Lean / 5S</div>
+            </div>
+            <div class="case-body">
+              <div class="case-title">Förbättringsarbete i produktion (Lean/5S)</div>
+              <div class="case-row">
+                <div>
+                  <div class="case-field-label">Syfte</div>
+                  <div class="case-field-val">Stabilare flöde och tydligare standarder i vardagen</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Insats</div>
+                  <div class="case-field-val">5S, standardisering och stöd vid avvikelser</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Resultat</div>
+                  <div class="case-field-val">Tydligare arbetssätt, bättre ordning och snabbare återgång vid störningar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-meta">
+              <div class="case-num">04</div>
+              <div class="case-type">Digital</div>
+            </div>
+            <div class="case-body">
+              <div class="case-title">PESISTTEMA — Digital plattform för stadssäkerhet</div>
+              <div class="case-row">
+                <div>
+                  <div class="case-field-label">Syfte</div>
+                  <div class="case-field-val">Digital plattform för trygghet och lokal samverkan</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Insats</div>
+                  <div class="case-field-val">Projektidé, mål, scope, krav, intressenter och roadmap</div>
+                </div>
+                <div>
+                  <div class="case-field-label">Resultat</div>
+                  <div class="case-field-val">Underlag klart för dialog, pilot och ansökningsprocess</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="portfolio-banner">
+          <div>
+            <div class="pb-label">Vill du se mer?</div>
+            <div class="pb-title">Fullständigt projektportfolio →</div>
+          </div>
+          <span class="pb-arrow">↗</span>
         </a>
-        <a href="certifikat-petar-dojcinovic.pdf" download class="diploma-card">
-          <span class="diploma-icon">📜</span>
-          <div>
-            <div class="diploma-title">Certifikat – Projektledare</div>
-            <div class="diploma-sub">Ladda ner PDF</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="section reveal">
-      <div class="section-header">
-        <span class="section-label">Nyckelfärdigheter</span>
-        <div class="section-line"></div>
-      </div>
-      <div class="skills-grid">
-        <span class="skill-tag featured">Projektledning</span>
-        <span class="skill-tag featured">Lean / 5S</span>
-        <span class="skill-tag featured">Förbättringsarbete</span>
-        <span class="skill-tag">Produktion</span>
-        <span class="skill-tag">Logistik</span>
-        <span class="skill-tag">Kvalitet & säkerhet</span>
-        <span class="skill-tag">WMS / SAP</span>
-        <span class="skill-tag">Microsoft 365</span>
-        <span class="skill-tag">Riskhantering</span>
-        <span class="skill-tag">Kommunikation</span>
-        <span class="skill-tag">Teamkoordinering</span>
-        <span class="skill-tag">Standardarbete</span>
-        <span class="skill-tag">Avvikelsehantering</span>
-        <span class="skill-tag">KPI-uppföljning</span>
-      </div>
-    </div>
-
-    <!-- CASE STUDIES -->
-    <div class="section reveal">
-      <div class="section-header">
-        <span class="section-label">Projekt & Case Studies</span>
-        <div class="section-line"></div>
       </div>
 
-      <div class="cases-grid">
-        <div class="case-card">
-          <div class="case-title">Förbättrad kommunikation mellan fyra avdelningar</div>
-          <div class="case-row">
-            <div class="case-item">
-              <div class="case-item-label">Bakgrund</div>
-              <div class="case-item-val">Svagt informationsflöde skapade väntetider och onödiga stopp</div>
-            </div>
-            <div class="case-item">
-              <div class="case-item-label">Åtgärd</div>
-              <div class="case-item-val">Tydliga kontaktvägar och direktnummer per avdelning</div>
-            </div>
-            <div class="case-item">
-              <div class="case-item-label">Effekt</div>
-              <div class="case-item-val">Snabbare svar, smidigare flöde och bättre samarbete</div>
-            </div>
-          </div>
-          <div class="case-note">Ingen formell chefsroll — förbättringen drevs operativt tillsammans med kollegor.</div>
+      <!-- EDUCATION -->
+      <div class="section reveal" id="utbildning">
+        <div class="sec-eyebrow">
+          <span class="sec-tag">Utbildning</span>
+          <div class="sec-line"></div>
         </div>
+        <h2 class="sec-title">Utbildning & certifikat</h2>
 
-        <div class="case-card">
-          <div class="case-title">Fokuserade truckförare till rätt avdelning</div>
-          <div class="case-row">
-            <div class="case-item">
-              <div class="case-item-label">Bakgrund</div>
-              <div class="case-item-val">Truckresursen spridd, låg träffsäkerhet, viktiga uppgifter hanns inte med</div>
+        <div class="edu-entries">
+          <div class="edu-row">
+            <div>
+              <div class="edu-title">Certifierad projektledare</div>
+              <div class="edu-school">Distansinstitutet</div>
+              <div class="edu-desc">Projektfaser, riskhantering, planering, kommunikation och uppföljning. Godkänt examensprojekt.</div>
             </div>
-            <div class="case-item">
-              <div class="case-item-label">Åtgärd</div>
-              <div class="case-item-val">Tydligare prioriteringar och koppling av resursen till specifik avdelning</div>
-            </div>
-            <div class="case-item">
-              <div class="case-item-label">Effekt</div>
-              <div class="case-item-val">Bättre fokus, mindre splittring och mer förutsägbar leverans</div>
-            </div>
-          </div>
-          <div class="case-note">Kan beskrivas mer ingående i intervju — vad som ändrades, vem som informerades och hur vi följde upp.</div>
-        </div>
-
-        <div class="case-card">
-          <div class="case-title">Förbättringsarbete i produktion (Lean/5S)</div>
-          <div class="case-row">
-            <div class="case-item">
-              <div class="case-item-label">Syfte</div>
-              <div class="case-item-val">Stabilare flöde och tydligare standarder i vardagen</div>
-            </div>
-            <div class="case-item">
-              <div class="case-item-label">Insats</div>
-              <div class="case-item-val">5S, standardisering och stöd vid avvikelser i samverkan med produktion</div>
-            </div>
-            <div class="case-item">
-              <div class="case-item-label">Resultat</div>
-              <div class="case-item-val">Tydligare arbetssätt, bättre ordning och snabbare återgång vid störningar</div>
-            </div>
+            <span class="edu-year">Maj 2025</span>
           </div>
         </div>
 
-        <div class="case-card">
-          <div class="case-title">PESISTTEMA — Digital plattform för stadssäkerhet</div>
-          <div class="case-row">
-            <div class="case-item">
-              <div class="case-item-label">Syfte</div>
-              <div class="case-item-val">Digital plattform för trygghet, lokal samverkan och informationsdelning</div>
+        <div class="diploma-row">
+          <a href="diplom-petar-dojcinovic.pdf" download class="diploma-card">
+            <span class="diploma-icon">🎓</span>
+            <div>
+              <div class="diploma-title">Diplom – Projektledare</div>
+              <div class="diploma-sub">Ladda ner PDF</div>
             </div>
-            <div class="case-item">
-              <div class="case-item-label">Insats</div>
-              <div class="case-item-val">Projektidé, mål, scope, krav, intressenter och roadmap</div>
+          </a>
+          <a href="certifikat-petar-dojcinovic.pdf" download class="diploma-card">
+            <span class="diploma-icon">📜</span>
+            <div>
+              <div class="diploma-title">Certifikat – Projektledare</div>
+              <div class="diploma-sub">Ladda ner PDF</div>
             </div>
-            <div class="case-item">
-              <div class="case-item-label">Resultat</div>
-              <div class="case-item-val">Underlag klart för dialog, pilot och ansökningsprocess</div>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
-    </div>
 
-    <!-- PORTFOLIO LINK -->
-    <a href="https://chempa983.github.io/Operations-Process-Development-Portfolio/" target="_blank" class="portfolio-link-card reveal">
-      <div class="plc-text">
-        <div class="plc-label">Vill du se mer?</div>
-        <div class="plc-title">Se mitt fullständiga projektportfolio →</div>
-      </div>
-      <span class="plc-arrow">↗</span>
-    </a>
-
+    </div><!-- /container -->
   </main>
 
   <footer>
-    © 2025 Petar Dojčinović · Alla rättigheter reserverade
+    © 2025 Petar Dojčinović · Landskrona, Sverige · pdojcinovic@proton.me
   </footer>
 
   <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
+    const obs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 60);
-          observer.unobserve(e.target);
+          setTimeout(() => e.target.classList.add('vis'), i * 80);
+          obs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => observer.observe(el));
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 
 </body>
